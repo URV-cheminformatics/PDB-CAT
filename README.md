@@ -71,7 +71,7 @@ Directory: where input files should be saved before running the program
 
 In the second point, structure and chain of reference should be chosen. In this case, the group choses 7JIW, as it has no mutation, it is in a non-covalent complex and also has a reference length (not short, not large) with no gaps in between.
 
-![Image URL](/home/ariadna/PROTIC/image_documentation/7jiw_assembly-1.jpeg)
+![Image URL](image_documentation/7jiw_assembly-1.jpeg)
 7JIW 3D structure in PDB
 
 In third point, we are going to **STOP** as two csv files has been created. You should go to your **path** directory and check those sequences in *mutation_info* and in *good_structures*. It has to be known that only *good_structures* PDB files will be classify.
