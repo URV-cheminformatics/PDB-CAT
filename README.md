@@ -1,5 +1,6 @@
 # PROTIC
-The main objective of this code is to identify no-mutated sequences of a specific target. It downloads PDB files locally and classifies them in covalent, non-covalent and free enzymes.
+
+PROTIC is a Python program that identifies no-mutated sequences of a specific target by downloading and classifying PDB files. The program categorizes the batch structures based on the type of interaction between atoms in the protein and the ligand into three categories: Covalent, Non-covalent, and Free enzymes. The program checks for any mutations in the sequence before classification by searching for the amino acid sequence (located in SEQRES lines of PDB file) and comparing them to a reference sequence.
 
 ## REQUIREMENTS
 This program requires the following packages:
@@ -20,7 +21,9 @@ This program takes PDB files locally saved as an input. It classifies the batch 
 
 Additionally, before the classification the program checks if there are any mutations in the sequence. To do this, the program searches for the aminoacids sequence (located in SEQRES lines of PDB file) and compares them to a reference sequence. If there are any differences, the program reports that there is a mutation, where is it, how many gaps has the chain sequence and what is the % of identity to reference sequence.
 
-Every cell where user needs to modify information is marked with numeric point. There are 4 points. In point 3, user need to make a STOP and to modify the first output. Then, the program can carry on the previous functions.
+## MODIFICATION
+
+Every code cell where user needs to modify information is marked with numeric point. There are 4 points. In point 3, user need to make a STOP and to modify the first output. Then, the program can carry on the previous functions.
 
 ## INPUT
 This code has two parts. 
@@ -59,7 +62,7 @@ A research group needs to study PLpro *in silico*. In order to do a virtual scre
 
 Previously to run the code, a batch of structures should be downloaded. The users of this program should be familiarized with the target, in this example, PLpro and also, how ligand acts in catalytic site. 
 
-![Alt Text](/home/ariadna/PROTIC/image_documentation/PDB_webpage.png)
+![Image URL](/home/ariadna/PROTIC/image_documentation/PDB_webpage.png)
 A PDB search is been done, therefore, next step should be *download all*.
 
 First of all, in the first point, the user needs to modify the code, specifically: **path** and **directory**. 
@@ -68,7 +71,7 @@ Directory: where input files should be saved before running the program
 
 In the second point, structure and chain of reference should be chosen. In this case, the group choses 7JIW, as it has no mutation, it is in a non-covalent complex and also has a reference length (not short, not large) with no gaps in between.
 
-![Alt Text](/home/ariadna/PROTIC/image_documentation/7jiw_assembly-1.jpeg)
+![Image URL](/home/ariadna/PROTIC/image_documentation/7jiw_assembly-1.jpeg)
 7JIW 3D structure in PDB
 
 In third point, we are going to **STOP** as two csv files has been created. You should go to your **path** directory and check those sequences in *mutation_info* and in *good_structures*. It has to be known that only *good_structures* PDB files will be classify.
