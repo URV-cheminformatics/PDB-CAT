@@ -62,7 +62,7 @@ A research group needs to study PLpro *in silico*. In order to do a virtual scre
 
 Previously to run the code, a batch of structures should be downloaded. The users of this program should be familiarized with the target, in this example, PLpro and also, how ligand acts in catalytic site. 
 
-![Image URL](/home/ariadna/PROTIC/image_documentation/PDB_webpage.png)
+![Image URL](image_documentation/PDB_webpage.png)
 A PDB search is been done, therefore, next step should be *download all*.
 
 First of all, in the first point, the user needs to modify the code, specifically: **path** and **directory**. 
