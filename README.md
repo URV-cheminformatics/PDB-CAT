@@ -1,6 +1,8 @@
-# PROTIC
+# PDB-CAT
 
-PROTIC is a Python program that identifies no-mutated sequences of a specific target by downloading and classifying PDB files. The program categorizes the batch structures based on the type of interaction between atoms in the protein and the ligand into three categories: Covalent, Non-covalent, and Free enzymes. The program checks for any mutations in the sequence before classification by searching for the amino acid sequence (located in SEQRES lines of PDB file) and comparing them to a reference sequence.
+![Image URL](image_documentation/PDB-CAT.png)
+
+PDB-CAT is a Python program that identifies no-mutated sequences of a specific target by downloading and classifying PDB files. The program categorizes the batch structures based on the type of interaction between atoms in the protein and the ligand into three categories: Covalent, Non-covalent, and Free enzymes. The program checks for any mutations in the sequence before classification by searching for the amino acid sequence (located in SEQRES lines of PDB file) and comparing them to a reference sequence.
 
 ## REQUIREMENTS
 This program requires the following packages:
@@ -33,7 +35,7 @@ In the first part, three CSV should be created.
 2. good_structures_info
 3. mutation_info
 
-Information about mutations, gaps and %identity.
+Information about mutations, gaps and % of identity.
 
 In the second part, the programs create 4 folders:
 1. structures_for_docking
