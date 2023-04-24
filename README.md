@@ -84,15 +84,16 @@ Directory: where input files should be saved before running the program
 In the *second point*(2), structure and chain of reference should be chosen. In this case, the group choses 7JIW, as it has no mutation, it is in a non-covalent complex and also has a reference length (not short, not large) with no gaps in between.
 
 ![Image URL](image_documentation/7jiw_reference_structure.jpeg)
-7JIW 3D structure in PDB
+
+*7JIW 3D structure in PDB*
 
 In *third point*(3), we are going to **STOP** as two csv files has been created. You should go to your **path** directory and check those sequences in *mutation_info* and in *good_structures*. It has to be known that only *good_structures* PDB files will be classify.
 
 For example, the idea is to eliminate rows in *first_output_no-mutated* that have short length or to add some rows of *mutation_info* row as it maybe have a mutation isolated from the binding site.
 
-This is how the first input looks like. From now on, the program will take this information to make the complexes classification. Remember to save as csv.
-
 ![Image URL](image_documentation/example_modify_first_input.png)
+
+*This is how the first input looks like. From now on, the program will take this information to make the complexes classification. Remember to save as csv.*
 
 Finally, *the forth point*(4) is to chose a residue of key importance, and also the one that bind with covalent bond. In this case, it is Cys111.
 
