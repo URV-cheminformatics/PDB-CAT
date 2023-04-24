@@ -34,7 +34,7 @@ Every code cell where user needs to modify information is marked with numeric po
 ## INPUT
 This code consists of two main parts.
 
-In the first part, the code reads PDB files and extracts information to create three CSV files:
+- In the first part, the code reads PDB files and extracts information to create three CSV files:
 
 *sequence_SEQRES*: This file contains the amino acid sequence of the protein from the SEQRES records of the PDB file, which is compared to a reference sequence to identify any mutations or gaps.
 
@@ -42,7 +42,7 @@ In the first part, the code reads PDB files and extracts information to create t
 
 *mutation_info*: This file contains information about mutations in the protein sequence, including the type of mutation and the position of the mutated residue.
 
-In the second part, the code creates four output folders:
+- In the second part, the code creates four output folders:
 
 *structures_for_docking*: This folder contains all the PDB files that are suitable for docking studies.
 
@@ -66,8 +66,8 @@ Overall, this code is designed to analyze and categorize protein-ligand complexe
 The program outputs the following information:
 
 The classification of the structure (covalent, non-covalent, or no bond).
-If the structure is classified as non-covlent, the program also reports the type of non-covalent interaction present in the structure (hydrogen bond, salt bridge, etc). 
-If the program detects a mutatiion, it reports the position of the mutation and the aminoacids change, gaps and identity %. Also, you can access to a csv with all no-mutated structures to check the length and gaps these.
+- If the structure is classified as non-covalent, the program also reports the type of non-covalent interaction present in the structure (hydrogen bond, salt bridge, etc). 
+- If the program detects a mutatiion, it reports the position of the mutation and the aminoacids change, gaps and identity %. Also, you can access to a csv with all no-mutated structures to check the length and gaps these.
 
 ## EXAMPLE
 A research group needs to study PLpro *in silico*. In order to do a virtual screening, on or two structures have to be chosen. For this reason, this program will help on a database inspection and classification. 
@@ -75,7 +75,8 @@ A research group needs to study PLpro *in silico*. In order to do a virtual scre
 Previously to run the code, a batch of structures should be downloaded. The users of this program should be familiarized with the target, in this example, PLpro and also, how ligand acts in catalytic site. 
 
 ![Image URL](image_documentation/PDB_webpage.png)
-A PDB search is been done, therefore, next step should be *download all*.
+
+*A PDB search is been done, therefore, next step should be *download all*.*
 
 First of all, *in the first point*(1), the user needs to modify the code, specifically: **path** and **directory**. 
 Path: where ouput files are created
@@ -100,3 +101,6 @@ Finally, *the forth point*(4) is to chose a residue of key importance, and also 
 After the classification:
 We see three folders: covalent(2), non_covalent(15) and free(3); and also, three csv with the binding information: DataCovalent, DataNonCovalent, DataFree.
 
+## LIMITATIONS
+
+One potential limitation of the PDB-CAT program is that the program requires the user to have a basic understanding of Python programming and the Biopython package, which may be a barrier for some users who are not familiar with these tools.
