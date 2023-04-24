@@ -2,6 +2,7 @@
 <div style="text-align:center">
     ![Image URL](image_documentation/PDB-CAT.png)
 </div>
+
 PDB-CAT is a Jupyter Notebook program designed to identify non-mutated sequences of a specific target by downloading and classifying PDB files. PDB files contain structural information about proteins and other biomolecules, and are widely used in Drug Discovery. However, sorting through large numbers of PDB files to find the desired structures can be a time-consuming task. PDB-CAT aims to simplify this process by automatically categorizing the structures based on the type of interaction between atoms in the protein and the ligand, and checking for any mutations in the sequence. The program outputs a file with structures that meet the specified criteria, which can then be used for further analysis, such as virtual screening or molecular docking. The program is easy to use and can be customized to fit the user's specific needs.
 
 PDB-CAT is a program that classifies a group of protein structures into three categories based on the interactions between atoms in the protein and the ligand. These categories are Covalent, Non-covalent, and Free enzymes. Before classification, the program verifies if there are any mutations in the protein sequence by searching for the amino acid sequence located in the SEQRES lines of the PDB file and comparing it to a reference sequence.
