@@ -31,9 +31,6 @@ Every code cell where user needs to modify information is marked with numeric po
 
 ![Image URL](image_documentation/stop.png)
 
-This is how the first input looks like. From now on, the program will take this information to make the complexes classification.
-![Image URL](image_documentation/modify_first_input.png)
-
 ## INPUT
 This code consists of two main parts.
 
@@ -93,6 +90,9 @@ In third point, we are going to **STOP** as two csv files has been created. You 
 
 For example, the idea is to eliminate *good_structures* with short length or to add some *mutation_info* row as it maybe have a mutation isolated from the binding site.
 
+This is how the first input looks like. From now on, the program will take this information to make the complexes classification.
+![Image URL](image_documentation/modify_first_input.png)
+    
 Finally, the forth point is to chose a residue of key importance, and also the one that bind with covalent bond. In this case, it is Cys111.
 
 After the classification:
