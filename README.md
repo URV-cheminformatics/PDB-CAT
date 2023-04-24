@@ -27,36 +27,41 @@ Additionally, before the classification the program checks if there are any muta
 
 ## MODIFICATION
 
-Every code cell where user needs to modify information is marked with numeric point. There are 4 points. In point 3, user need to make a STOP and to modify the first output. Then, the program can carry on the previous functions.
+Every code cell where user needs to modify information is marked with numeric point. There are 4 points. In point 3, user need to make a  **STOP** and to modify the first output. Then, the program can carry on the previous functions.
+
+![Image URL](image_documentation/stop.png)
+
+This is how the first input looks like. From now on, the program will take this information to make the complexes classification.
+![Image URL](image_documentation/modify_first_input.png)
 
 ## INPUT
 This code consists of two main parts.
 
 In the first part, the code reads PDB files and extracts information to create three CSV files:
 
-sequence_SEQRES: This file contains the amino acid sequence of the protein from the SEQRES records of the PDB file, which is compared to a reference sequence to identify any mutations or gaps.
+*sequence_SEQRES*: This file contains the amino acid sequence of the protein from the SEQRES records of the PDB file, which is compared to a reference sequence to identify any mutations or gaps.
 
-good_structures_info: This file contains information about the quality of the PDB structures, including resolution and R-factor values, which are used to filter out structures with poor quality.
+*no_mutated_structures_info*: This file contains information about the quality of the PDB structures, including resolution and R-factor values, which are used to filter out structures with poor quality.
 
-mutation_info: This file contains information about mutations in the protein sequence, including the type of mutation and the position of the mutated residue.
+*mutation_info*: This file contains information about mutations in the protein sequence, including the type of mutation and the position of the mutated residue.
 
 In the second part, the code creates four output folders:
 
-structures_for_docking: This folder contains all the PDB files that are suitable for docking studies.
+*structures_for_docking*: This folder contains all the PDB files that are suitable for docking studies.
 
-Covalent_Folder: This folder contains PDB files of covalently bound protein-ligand complexes.
+*Data_Covalent_Folder*: This folder contains PDB files of covalently bound protein-ligand complexes.
 
-NonCovalent_Folder: This folder contains PDB files of non-covalently bound protein-ligand complexes.
+*Data_Non-Covalent_Folder*: This folder contains PDB files of non-covalently bound protein-ligand complexes.
 
-Free_Folder: This folder contains PDB files of unbound proteins (also known as apo-structures).
+*Data_No-Bond_Folder*: This folder contains PDB files of unbound proteins (also known as apo-structures).
 
 In addition to the output folders, the code also generates three CSV files:
 
-DataCovalent: This file contains information about covalent interactions between the protein and the ligand, including the bond type, bond length, and the atoms involved in the bond.
+*Data_Covalent*: This file contains information about covalent interactions between the protein and the ligand, including the bond type, bond length, and the atoms involved in the bond.
 
-DataFree: This file contains information about unbound proteins, including the root-mean-square deviation (RMSD) of the protein structure and the presence of any pockets or cavities.
+*Data_No-Bond*: This file contains information about unbound proteins, including the root-mean-square deviation (RMSD) of the protein structure and the presence of any pockets or cavities.
 
-DataNonCovalent: This file contains information about non-covalent interactions between the protein and the ligand, including the types of interactions (e.g., hydrogen bonds, van der Waals interactions), the distances between interacting atoms, and the orientation of the ligand in the binding site.
+*Data_Non-Covalent*: This file contains information about non-covalent interactions between the protein and the ligand, including the types of interactions (e.g., hydrogen bonds, van der Waals interactions), the distances between interacting atoms, and the orientation of the ligand in the binding site.
 
 Overall, this code is designed to analyze and categorize protein-ligand complexes based on their structural and chemical features, providing useful information for drug discovery and other applications in structural biology.
 
