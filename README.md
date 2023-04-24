@@ -2,7 +2,9 @@
 
 ![Image URL](image_documentation/PDB-CAT.png)
 
-PDB-CAT is a Python program that identifies no-mutated sequences of a specific target by downloading and classifying PDB files. The program categorizes the batch structures based on the type of interaction between atoms in the protein and the ligand into three categories: Covalent, Non-covalent, and Free enzymes. The program checks for any mutations in the sequence before classification by searching for the amino acid sequence (located in SEQRES lines of PDB file) and comparing them to a reference sequence.
+PDB-CAT is a Jupyter Notebook program designed to identify non-mutated sequences of a specific target by downloading and classifying PDB files. PDB files contain structural information about proteins and other biomolecules, and are widely used in Drug Discovery. However, sorting through large numbers of PDB files to find the desired structures can be a time-consuming task. PDB-CAT aims to simplify this process by automatically categorizing the structures based on the type of interaction between atoms in the protein and the ligand, and checking for any mutations in the sequence. The program outputs a file with structures that meet the specified criteria, which can then be used for further analysis, such as virtual screening or molecular docking. The program is easy to use and can be customized to fit the user's specific needs.
+
+PDB-CAT is a program that classifies a group of protein structures into three categories based on the interactions between atoms in the protein and the ligand. These categories are Covalent, Non-covalent, and Free enzymes. Before classification, the program verifies if there are any mutations in the protein sequence by searching for the amino acid sequence located in the SEQRES lines of the PDB file and comparing it to a reference sequence.
 
 ## REQUIREMENTS
 This program requires the following packages:
@@ -28,29 +30,35 @@ Additionally, before the classification the program checks if there are any muta
 Every code cell where user needs to modify information is marked with numeric point. There are 4 points. In point 3, user need to make a STOP and to modify the first output. Then, the program can carry on the previous functions.
 
 ## INPUT
-This code has two parts. 
+This code consists of two main parts.
 
-In the first part, three CSV should be created. 
-1. sequence_SEQRES
-2. good_structures_info
-3. mutation_info
+In the first part, the code reads PDB files and extracts information to create three CSV files:
 
-Information about mutations, gaps and % of identity.
+sequence_SEQRES: This file contains the amino acid sequence of the protein from the SEQRES records of the PDB file, which is compared to a reference sequence to identify any mutations or gaps.
 
-In the second part, the programs create 4 folders:
-1. structures_for_docking
-2. Covalent_Folder
-3. NonCovalent_Folder
-4. Free_Folder
+good_structures_info: This file contains information about the quality of the PDB structures, including resolution and R-factor values, which are used to filter out structures with poor quality.
 
-PDB files classify for complex type.
+mutation_info: This file contains information about mutations in the protein sequence, including the type of mutation and the position of the mutated residue.
 
-and also 3 CSV:
-1. DataCovalent
-2. DataFree
-3. DataNonCovalent
+In the second part, the code creates four output folders:
 
-Information about bond, where is the bond and to how it is made.
+structures_for_docking: This folder contains all the PDB files that are suitable for docking studies.
+
+Covalent_Folder: This folder contains PDB files of covalently bound protein-ligand complexes.
+
+NonCovalent_Folder: This folder contains PDB files of non-covalently bound protein-ligand complexes.
+
+Free_Folder: This folder contains PDB files of unbound proteins (also known as apo-structures).
+
+In addition to the output folders, the code also generates three CSV files:
+
+DataCovalent: This file contains information about covalent interactions between the protein and the ligand, including the bond type, bond length, and the atoms involved in the bond.
+
+DataFree: This file contains information about unbound proteins, including the root-mean-square deviation (RMSD) of the protein structure and the presence of any pockets or cavities.
+
+DataNonCovalent: This file contains information about non-covalent interactions between the protein and the ligand, including the types of interactions (e.g., hydrogen bonds, van der Waals interactions), the distances between interacting atoms, and the orientation of the ligand in the binding site.
+
+Overall, this code is designed to analyze and categorize protein-ligand complexes based on their structural and chemical features, providing useful information for drug discovery and other applications in structural biology.
 
 ## OUTPUT
 The program outputs the following information:
