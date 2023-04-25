@@ -21,9 +21,15 @@ You can install these packages using pip:
 ## USAGE
 This program takes PDB files locally saved as an input. It classifies the batch structures based on their type of complexes. The classification is based on the type of interaction between atoms in the structure, it has three categories:
 
-1. Covalent: if the structure contains only covalent bonds
-2. Non-covalent: if the structure contains only non-covalent bonds
-3. Free: if the strucutre does not bond to any ligand
+1. Covalent: if the structure contains a LINK information line in the PDB file
+2. Non-covalent: if the structure contains at least one non-covalent bond with a peptide
+3. Free: if the strucutre has non-covalent bond with HET group or not bond at all
+
+In this repository, a text file is attached. The text file named *blacklist* is used to keep track of all HET groups identified in a protein structure. HET group refers to a non-standard or "heterogeneous" group of atoms within a protein or nucleic acid structure that are not part of the standard building blocks of amino acids or nucleotides. These can include small molecules such as ligands, cofactors, and inhibitors that bind to the protein, as well as metal ions and solvent molecules that are present in the crystal structure.
+
+HET groups are assigned a unique identifier within the PDB, which allows researchers to easily reference them and study their interactions with the protein. They are typically represented using three-letter codes, such as "ADP" for adenosine diphosphate or "HEM" for heme.
+
+The presence of HET groups can provide valuable insights into the structure and function of a protein, as they can reveal important details about the protein's ligand-binding sites, allosteric regulation, and catalytic mechanisms.
 
 Additionally, before the classification the program checks if there are any mutations in the sequence. To do this, the program searches for the aminoacids sequence (located in SEQRES lines of PDB file) and compares them to a reference sequence. If there are any differences, the program reports that there is a mutation, where is it, how many gaps has the chain sequence and what is the % of identity to reference sequence.
 
@@ -31,9 +37,12 @@ Additionally, before the classification the program checks if there are any muta
 
 Every code cell where user needs to modify information is marked with numeric point. There are 4 points. In point 3, user need to make a  **STOP** and to modify the first output. Then, the program can carry on the previous functions.
 
-![Image URL](image_documentation/stop.png)
+![Image URL](image_documentation/stop_point.png)
 
 ## INPUT
+
+Part of the input files is *blacklist.txt*. It is necessary to ensure that the blacklist.txt file is located in the working directory before running the program, as it is a required input file.
+
 This code consists of two main parts.
 
 - In the first part, the code reads PDB files and extracts information to create three CSV files:
@@ -48,11 +57,11 @@ This code consists of two main parts.
 
 *structures_for_docking*: This folder contains all the PDB files that are suitable for docking studies.
 
-*Data_Covalent_Folder*: This folder contains PDB files of covalently bound protein-ligand complexes.
+*Covalent_Folder*: This folder contains PDB files of covalently bound protein-ligand complexes.
 
-*Data_Non-Covalent_Folder*: This folder contains PDB files of non-covalently bound protein-ligand complexes.
+*Non-Covalent_Folder*: This folder contains PDB files of non-covalently bound protein-ligand complexes.
 
-*Data_No-Bond_Folder*: This folder contains PDB files of unbound proteins (also known as apo-structures).
+*No-Bond_Folder*: This folder contains PDB files of unbound proteins (also known as apo-structures).
 
 In addition to the output folders, the code also generates three CSV files:
 
@@ -81,14 +90,17 @@ Previously to run the code, a batch of structures should be downloaded. The user
 *A PDB search is been done, therefore, next step should be *download all*.*
 
 First of all, *in the first point*(1), the user needs to modify the code, specifically: **path** and **directory**. 
+
+![Image URL](image_documentation/point_1.png)
+
 Path: where ouput files are created
 Directory: where input files should be saved before running the program
 
 In the *second point*(2), structure and chain of reference should be chosen. In this case, the group choses 7JIW, as it has no mutation, it is in a non-covalent complex and also has a reference length (not short, not large) with no gaps in between.
 
-![Image URL](image_documentation/7jiw_reference_structure.jpeg)
+![Image URL](image_documentation/point_2.png)
 
-*7JIW 3D structure in PDB*
+Here the reference structure would be 7JIW.ent from the PDB, and the reference chain would be the A chain.
 
 In *third point*(3), we are going to **STOP** as two csv files has been created. You should go to your **path** directory and check those sequences in *mutation_info* and in *good_structures*. It has to be known that only *good_structures* PDB files will be classify.
 
@@ -96,12 +108,18 @@ For example, the idea is to eliminate rows in *first_output_no-mutated* that hav
 
 ![Image URL](image_documentation/example_modify_first_input.png)
 
-*This is how the first input looks like. From now on, the program will take this information to make the complexes classification. Remember to save as csv.*
+*This is how the first input looks like. From now on, the program will take this information to make the complexes classification. Remember to save as csv!*
 
-Finally, *the forth point*(4) is to chose a residue of key importance, and also the one that bind with covalent bond. In this case, it is Cys111.
+Finally, *the forth point*(4) is to chose a residue of key importance, and also the one that bind with covalent bond. 
+
+![Image URL](image_documentation/point_4.png)
+
+In this case, it would be the Cys111. 
 
 After the classification:
-We see three folders: covalent(2), non_covalent(15) and free(3); and also, three csv with the binding information: DataCovalent, DataNonCovalent, DataFree.
+We see three folders: Covalent_Folder(4), Non-Covalent_Folder(16) and No-Bond_Folder(3); and also, three csv with the binding information: Data_Covalent.csv, Non-Covalent_Folder.csv, Data_No-Bond.csv.
+
+![Image URL](image_documentation/output.png)
 
 ## LIMITATIONS
 
