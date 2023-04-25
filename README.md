@@ -16,6 +16,8 @@ This program requires the following packages:
 You can install these packages using pip:
     $ pip install <library>
 
+*You do not need extensive knowledge of these libraries.*
+
 ## USAGE
 This program takes PDB files locally saved as an input. It classifies the batch structures based on their type of complexes. The classification is based on the type of interaction between atoms in the structure, it has three categories:
 
