@@ -69,7 +69,7 @@ In addition to the output folders, the code also generates three CSV files:
 Overall, this code is designed to analyze and categorize protein-ligand complexes based on their structural and chemical features, providing useful information for drug discovery and other applications in structural biology.
 
 The program outputs the following information:
-![Image URL](image_documentation/Scheme.png)
+<img src="image_documentation/Scheme.png" width="800">
 
 ## EXAMPLE
 A research group needs to study PLpro *in silico*. In order to do a virtual screening, on or two structures have to be chosen. For this reason, this program will help on a database inspection and classification. 
