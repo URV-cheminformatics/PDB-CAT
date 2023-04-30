@@ -1,12 +1,12 @@
 # PDB-CAT
-
 ![Image URL](image_documentation/PDB-CAT.png)
 
 PDB files contain structural information about proteins and other biomolecules, and are widely used in Drug Discovery. However, sorting through large numbers of PDB files to find the desired structures can be a time-consuming task. PDB-CAT is a Jupyter Notebook that aims to simplify this process by automatically categorizing the structures based on the type of interaction between atoms in the protein and the ligand, and checking for any mutations in the sequence. PDB-CAT is a program that classifies a group of protein structures into three categories: covalent bonded, non-covalent bonded, and no-bonded. Before classification, the program verifies if there are any mutations in the protein sequence by searching for the amino acid sequence located in the SEQRES lines of the PDB file and comparing it to a reference sequence. The program outputs a file with structures that meet the specified criteria, which can then be used for further analysis, such as virtual screening or molecular docking. The program is easy to use and can be customized to fit the user's specific needs.
 
 ## REQUIREMENTS
+This notebook uses Python 3.10.9
 This program requires the following packages:
-- Biopython
+- Biopython (1.81)
 - os
 - re
 - csv
@@ -21,35 +21,36 @@ This program takes PDB files locally saved as an input. It classifies the batch 
 
 1. Covalent: if the structure contains a LINK information line in the PDB file
 2. Non-covalent: if the structure contains at least one non-covalent bond with a peptide
-3. No-bond: if the strucutre has not bond at all, it bonds solvents or ion molecules (described in blacklist)
+3. No-bond: if the strucutre has not bond at all, or it bonds solvents or ion molecules (described in blacklist)
 
-In this repository, a text file is attached. The text file named *blacklist* and is used to keep track of all groups identified as non-ligand in a protein structure. HET group refers to a non-standard or "heterogeneous" group of atoms within a protein or nucleic acid structure that are not part of the standard building blocks of amino acids or nucleotides. These can include small molecules such as cofactors, and inhibitors that bind to the protein, as well as metal ions and solvent molecules that are present in the crystal structure.This molecules are assigned a unique identifier within the PDB, which allows researchers to easily reference them and study their interactions with the protein. They are typically represented using three-letter codes, such as "ADP" for adenosine diphosphate or "HEM" for heme.
+In this repository, a text file is attached. The text file named *blacklist* and is used to keep track of all groups identified as non-ligand in a protein structure. HET group refers to a non-standard or "heterogeneous" group of atoms within a protein or nucleic acid structure that are not part of the standard building blocks of amino acids or nucleotides. These can include small molecules such as cofactors, and inhibitors that bind to the protein, as well as metal ions and solvent molecules that are present in the crystal structure.
 
 Additionally, before the classification the program checks if there are any mutations in the sequence. To do this, the program searches for the aminoacids sequence (located in SEQRES lines of PDB file) and compares them to a reference sequence. If there are any differences, the program reports that there is a mutation, where is it, how many gaps has the chain sequence and what is the % of identity to reference sequence.
 
 ## MODIFICATION
 
-Every code cell where user needs to modify information is marked in 4 stages. In the stage 3, the user need to make a  **** and to modify the first output. Then, the program can carry on the previous functions.
+Every code cell where user needs to modify information is marked in 4 stages. In the stage 3, is recommended but not mandatory to check first CSV output. Then, the program can carry on the subsequent functions.
 
 ![Image URL](image_documentation/stop_point.png)
 
 ## INPUT
 
-Part of the input files is *blacklist.txt*. It is necessary to ensure that the blacklist.txt file is located in the working directory before running the program, as it is a required input file.
+The first step before running this notebook is to search the target in https://www.rcsb.org/ webpage. It is needed to download the different structures that match our search and save them in a folder inside the repository directory. Thus to start running the code, the input files are the PDB files in the directory and the *blacklist.txt*. It is necessary to ensure that the blacklist.txt file is located in the working directory before running the program.
 
+## OUTPUT
 This code consists of two main parts.
 
 - In the first part, the code reads PDB files and extracts information to create three CSV files:
 
-*sequence_SEQRES*: This file contains the amino acid sequence of the protein from the SEQRES records of the PDB file, which is compared to a reference sequence to identify any mutations or gaps.
+*sequence_SEQRES*: This file contains the amino acid sequence of the protein from the SEQRES records of the PDB file.
 
-*no_mutated_sequence*: This file contains information about the quality of the PDB structures, including resolution and R-factor values, which are used to filter out structures with poor quality.
+*no_mutated_sequence*: This file contains essential information about the quality of the PDB structure sequence, including the sequence length, gaps with respect to a reference structure, and the % of identity towards a reference structure.
 
-*mutated_sequence*: This file contains information about mutations in the protein sequence, including the type of mutation and the position of the mutated residue.
+*mutated_sequence*: This file contains essential information about the quality of the PDB structure sequence, including the sequence length, gaps with respect to a reference structure, the percentage of identity towards a reference structure, and residues that do not correspond to the 20 essential amino acids.
 
 - In the second part, the code creates four output folders:
 
-*structures_for_docking*: This folder contains all the PDB files that are suitable for docking studies.
+*structures_for_docking*: This folder contains all the PDB files that are classified in *no_mutated_sequence*.
 
 *Covalent_Folder*: This folder contains PDB files of covalently bound protein-ligand complexes.
 
@@ -59,22 +60,15 @@ This code consists of two main parts.
 
 In addition to the output folders, the code also generates three CSV files:
 
-*Data_Covalent*: This file contains information about covalent interactions between the protein and the ligand, including the bond type, bond length, and the atoms involved in the bond.
+*Data_Covalent*: This file contains information about covalent link between the protein and the ligand, including the information line (LINK line) in the PDB files.
 
-*Data_No-Bond*: This file contains information about unbound proteins, including the root-mean-square deviation (RMSD) of the protein structure and the presence of any pockets or cavities.
+*Data_No-Bond*: This file contains information about non-covalent bond between the protein and the ligand, including the information line (HET line) in the PDB files.
 
-*Data_Non-Covalent*: This file contains information about non-covalent interactions between the protein and the ligand, including the types of interactions (e.g., hydrogen bonds, van der Waals interactions), the distances between interacting atoms, and the orientation of the ligand in the binding site.
+*Data_Non-Covalent*: This file contains information about non-covalent bond between the protein and ions, solvents or pseudopeptides, including the information line (HET line) in the PDB files.
 
 Overall, this code is designed to analyze and categorize protein-ligand complexes based on their structural and chemical features, providing useful information for drug discovery and other applications in structural biology.
 
-## OUTPUT
-
 The program outputs the following information:
-
-The classification of the structure (covalent, non-covalent, or no bond).
-- If the structure is classified as non-covalent, the program also reports the type of non-covalent interaction present in the structure (hydrogen bond, salt bridge, etc). 
-- If the program detects a mutatiion, it reports the position of the mutation and the aminoacids change, gaps and identity %. Also, you can access to a csv with all no-mutated structures to check the length and gaps these.
-
 ![Image URL](image_documentation/Scheme.png)
 
 ## EXAMPLE
@@ -86,28 +80,30 @@ Previously to run the code, a batch of structures should be downloaded. The user
 
 *A PDB search is been done, therefore, next step should be *download all*.*
 
-First of all, *in the first point*(1), the user needs to modify the code, specifically: **path** and **directory**. 
+First of all, *in the first stage*(1), the user needs to modify the code, specifically: **path** and **directory**. 
 
 ![Image URL](image_documentation/stage_1.png)
 
 Path: where ouput files are created
 Directory: where input files should be saved before running the program
 
-In the *second point*(2), structure and chain of reference should be chosen. In this case, the group choses 7JIW, as it has no mutation, it is in a non-covalent complex and also has a reference length (not short, not large) with no gaps in between.
+In the *second stage*(2), structure and chain of reference should be chosen. In this case, the group choses 7JIW, as it has no mutation, it is in a non-covalent complex and also has a reference length (not short, not large) with no gaps in between.
 
 ![Image URL](image_documentation/stage_2.png)
 
 Here the reference structure would be 7JIW.ent from the PDB, and the reference chain would be the A chain.
 
-In *third point*(3), we are going to **STOP** as two csv files has been created. You should go to your **path** directory and check those sequences in *mutation_info* and in *good_structures*. It has to be known that only *good_structures* PDB files will be classify.
+In the *third stage (3)*, two CSV files have been created. You can go to your path directory and check those sequences in *mutated_sequence* and in *no_mutated_sequence*, or continue executing the code. It should be noted that only PDB files from good_structures will be classified.
 
-For example, the idea is to eliminate rows in *first_output_no-mutated* that have short length or to add some rows of *mutation_info* row as it maybe have a mutation isolated from the binding site.
+Note: "path" refers to the location of the folder on your system where the mentioned CSV files were saved.
+
+For example, the idea is to eliminate rows in *no_mutated_sequence* that have short length or to add some rows of *mutated_sequence* row as it maybe have a mutation isolated from the binding site.
 
 ![Image URL](image_documentation/example_modify_first_input.png)
 
 *This is how the first input looks like. From now on, the program will take this information to make the complexes classification. Remember to save as csv!*
 
-Finally, *the forth point*(4) is to chose a residue of key importance, and also the one that bind with covalent bond. 
+Finally, *the forth stage*(4) is to chose a residue of key importance, and also the one that bind with covalent bond. 
 
 ![Image URL](image_documentation/stage_4.png)
 
