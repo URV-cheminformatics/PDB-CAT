@@ -31,7 +31,7 @@ Additionally, before the classification the program checks if there are any muta
 
 Every code cell where user needs to modify information is marked in 4 stages. In the stage 3, is recommended but not mandatory to check first CSV output. Then, the program can carry on the subsequent functions.
 
-![Image URL](image_documentation/stop_point.png)
+![Image URL](image_documentation/stage_3.png)
 
 ## INPUT
 
