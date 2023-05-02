@@ -1,5 +1,5 @@
 # PDB-CAT
-<img src="image_documentation/PDB-CAT.jpg" width="500">
+<img src="image_documentation/PDB-CAT.jpg" width="300">
 
 PDB files contain structural information about proteins and other biomolecules, and are widely used in Drug Discovery. However, sorting through large numbers of PDB files to find the desired structures can be a time-consuming task. PDB-CAT is a Jupyter Notebook that aims to simplify this process by automatically categorizing the structures based on the type of interaction between atoms in the protein and the ligand, and checking for any mutations in the sequence. PDB-CAT is a program that classifies a group of protein structures into three categories: covalent bonded, non-covalent bonded, and no-bonded. Before classification, the program verifies if there are any mutations in the protein sequence by searching for the amino acid sequence located in the SEQRES lines of the PDB file and comparing it to a reference sequence. The program outputs a file with structures that meet the specified criteria, which can then be used for further analysis, such as virtual screening or molecular docking. The program is easy to use and can be customized to fit the user's specific needs.
 
@@ -69,7 +69,7 @@ In addition to the output folders, the code also generates three CSV files:
 Overall, this code is designed to analyze and categorize protein-ligand complexes based on their structural and chemical features, providing useful information for drug discovery and other applications in structural biology.
 
 The program outputs the following information:
-<img src="image_documentation/Scheme.png" width="5000">
+<img src="image_documentation/Scheme.pdf" width="2000">
 
 ## EXAMPLE
 A research group needs to study PLpro *in silico*. In order to do a virtual screening, on or two structures have to be chosen. For this reason, this program will help on a database inspection and classification. 
