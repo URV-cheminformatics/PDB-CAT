@@ -70,7 +70,7 @@ Overall, this code is designed to analyze and categorize protein-ligand complexe
 
 The program outputs the following information:
 
-<img src="image_documentation/Scheme.pdf" width="2000">
+<img src="image_documentation/Scheme.png" width="2000">
 
 ## EXAMPLE
 A research group needs to study PLpro *in silico*. In order to do a virtual screening, on or two structures have to be chosen. For this reason, this program will help on a database inspection and classification. 
