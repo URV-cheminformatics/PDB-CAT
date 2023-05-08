@@ -37,6 +37,18 @@ Every code cell where user needs to modify information is marked in 4 stages. In
 
 The first step before running this notebook is to search the target in https://www.rcsb.org/ webpage. It is needed to download the different structures that match our search and save them in a folder inside the repository directory. Thus to start running the code, the input files are the PDB files in the directory and the *blacklist.txt*. It is necessary to ensure that the blacklist.txt file is located in the working directory before running the program.
 
+#### Input text
+
+To run the code, we need to provide four text inputs, which are divided into two stages.
+
+In stage 2, the code requires a reference structure and its reference chain. To choose the structure, we must follow three rules: first, it should be a non-mutated structure; second, it should be part of a non-covalent complex with its ligand; and third, its length should match the target description.
+
+Moving on to stage 4, we need to provide two inputs. The first one is the reference residue found in the binding site, which has a significant interaction with the ligand. This information can be obtained during the literature search prior to virtual screening. The second input is the residue to which the covalent bonds will be attached. If we don't have any evidence of covalent bonds in the target, we can use the default line, which indicates a placeholder residue or a wildcard character. It is necessary to include this line for subsequent classification.
+
+However, if we later discover that the target has covalent bonds, we need to modify the input to ensure accurate classification.
+
+In summary, we have four inputs: reference structure and its chain, reference residue, and residue for covalent bond attachment. These inputs are required in stage 2 and stage 4, and we need to follow specific rules to select the reference structure. If we are unsure of the presence of covalent bonds, we can use the default line, but we may need to modify it later for accurate classification.
+
 ## OUTPUT
 This code consists of two main parts.
 
@@ -114,6 +126,14 @@ After the classification:
 We see three folders: Covalent_Folder(4), Non-Covalent_Folder(16) and No-Bond_Folder(3); and also, three csv with the binding information: Data_Covalent.csv, Non-Covalent_Folder.csv, Data_No-Bond.csv.
 
 ![Image URL](image_documentation/output.png)
+
+## UNCLEAR CASES
+
+There are certain cases that are unclear, such as SYNTENIN 1. The non-covalent ligands of syntenin can be small peptides that are present in PDB files as part of the protein chains, rather than as separate non-covalent bonds. On the rcsb.org website, these ligands are classified under the 'macromolecules' section. To ensure that they are not being excluded from the non-covalent classification, we will check the csv files that we obtain, specifically, the *mutated_sequence.csv* file. By examining the image, we can identify chains of 6-10 residues that are ligands in this case. 
+
+![Image URL](image_documentation/short_sequence.png)
+
+Therefore, if we find substantially small chains in our csv files, we will check if they are ligands. If they are indeed ligands, we will select the file and move it directly to the Non-Covalent_Folder directory.
 
 ## LIMITATIONS
 
