@@ -18,13 +18,13 @@ PDB-CAT is a Jupyter Notebook that aims to automatically categorize the PDB stru
 - Download the PDBx/mmCIF files 
     If you download in batches:
     1. Decompress downloaded .gz
-        gunzip *.gz
+        *_gunzip *.gz-*
     2. Move files from the compress batch files
-        find batch-download-structures-* -type f -exec mv {} . \;
+       *_ find batch-download-structures-* -type f -exec mv {} . \; _*
     3. Decompress downloaded .gz
-        gunzip *.gz
+        *_ gunzip *.gz _*
     4. Move into cif directory
-        mv *.cif cif/
+        *_ mv *.cif cif/ _*
 
 # How to use
 ## Variables
@@ -50,5 +50,5 @@ Mutation = False
 The blacklist collects over 280 solvent, ion, co-factor, etc. codes that can bond to the protein structure. 
 It is a text file that users can modify in case new codes are found.
 
-## Main Protease SARS-CoV-2 Example
+# Main Protease SARS-CoV-2 Example
 Users can follow the procedure in the example directory, making modifications to the main code variables and exploring their possibilities.
