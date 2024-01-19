@@ -38,14 +38,23 @@ PDB-CAT is a Jupyter Notebook that aims to automatically categorize the PDB stru
 ## Variables
 It is necessary to define the main code variables.
 - Path and name of the csv output file
+
     out_file = '/home/...'
+
 - Analyze mutations. True or False
+
     mutation = True
+
 - Path of the output folders
+    
     output_path = /home/...'
+
 - Path to the pdb file that will be the reference sequence
+    
     pdb_reference_sequence = '/home/.../PDB-CAT/*.cif' 
+
 - '0' means that the first _entity_poly of the pdb_reference_sequence will be the reference sequence
+    
     entity_reference = 0 
 
 ## Choose to use mutation filter
