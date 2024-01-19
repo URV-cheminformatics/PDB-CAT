@@ -19,13 +19,17 @@ PDB-CAT is a Jupyter Notebook that aims to automatically categorize the PDB stru
 - Download the PDBx/mmCIF files 
     If you download in batches:
     1. Decompress downloaded .gz
-    *gunzip *.gz*
+    
+    gunzip *.gz
     2. Move files from the compress batch files
-    *find batch-download-structures-* -type f -exec mv {} . \;*
+    
+    find batch-download-structures-* -type f -exec mv {} . \;
     3. Decompress downloaded .gz
-    *gunzip *.gz*
+
+    gunzip *.gz
     4. Move into cif directory
-    *mv *.cif cif/*
+    
+    mv *.cif cif/
 
 # How to use
 ## Variables
