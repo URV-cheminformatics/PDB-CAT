@@ -32,13 +32,13 @@ In order to create the Dataset there are two options:
 
 2. Download the structures of known IDs with the following executable:
 
-[batch-download script](https://www.rcsb.org/docs/programmatic-access/batch-downloads-with-shell-script)
+  [batch-download script](https://www.rcsb.org/docs/programmatic-access/batch-downloads-with-shell-script)
 
-**-f** specify input file with id separate by comma
+  **-f** specify input file with id separate by comma
 
-**-c** for cif-gz file
+  **-c** for cif-gz file
 
-**-o** specifiy output path
+  **-o** specifiy output path
 
 ```bash
   ./batch_download.sh -f input.txt -c -o /output # execute to download by ID names
