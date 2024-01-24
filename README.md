@@ -1,71 +1,81 @@
+![Logo](https://github.com/URV-cheminformatics/PDB-CAT/tree/main/image_documentation/PDB_CAT.png)
+
+
 # PDB-CAT: Classification and Analysis Tool (beta version)
-<img src="image_documentation/PDB-CAT.jpg" width="300">
 
 PDB-CAT is a Jupyter Notebook that aims to automatically categorize the PDB structures based on the type of interaction between atoms in the protein and the ligand, and checking for any mutations in the sequence. PDB-CAT is a program that classifies a group of protein structures into three categories: free-ligand, covalent bonded, and non-covalent bonded. Besides the classification, the program can verifies if there are any mutations in the protein sequence by comparing it to a reference sequence. The program outputs a CSV file with structural information, which can then be used for further analysis, such as virtual screening or molecular docking. PDB-CAT is user-friendly and can be customized to meet specific needs.
 
-# Overview
+
+## Documentation
 
 <img src="image_documentation/PDB-CAT_poster.png" width="800">
 
-# Setup
-## Packages
-- Use Python 3.10
-- Install required packages using:
 
-    pip install -r requirements. txt in your terminal
+## Installation
 
+Python3.10 is required.
+Install required packages using:
+
+```bash
+  pip install -r requirements.txt
+```
+    
 ## Dataset
-- Search your protein target in Protein Data Bank
-- Download the PDBx/mmCIF files 
-    If you download in batches:
-    1. Decompress downloaded .gz
-    
-        gunzip *.gz
 
-    2. Move files from the compress batch files
-    
-        find batch-download-structures-* -type f -exec mv {} . \;
+In order to create the Dataset there are two options:
 
-    3. Decompress downloaded .gz
+1. Search your protein target in Protein Data Bank and download the PDBx/mmCIF files in batches
 
-        gunzip *.gz
+```bash
+  gunzip *.gz # Decompress downloaded .gz
+  find batch-download-structures-* -type f -exec mv {} . \ # Move files from the compress batch files
+  gunzip *.gz # Decompress downloaded .gz
+  mv *.cif cif/ # Move into cif directory
+```
 
-    4. Move into cif directory
-    
-        mv *.cif cif/
+2. Download the structures of known IDs with the following executable:
 
-# How to use
+[batch-download script](https://www.rcsb.org/docs/programmatic-access/batch-downloads-with-shell-script)
+
+**-f** specify input file with id separate by comma
+
+**-c** for cif-gz file
+
+**-o** specifiy output path
+
+```bash
+  ./batch_download.sh -f input.txt -c -o /output # execute to download by ID names
+  gunzip *.gz # Decompress downloaded .gz
+```
+
+
 ## Variables
-It is necessary to define the main code variables.
-- Path and name of the csv output file
 
-    out_file = '/home/...'
+To run this project, you will need to add the following variables to your main code
 
-- Analyze mutations. True or False
+```python
+  out_file = '/home/...' # Path and name of the csv output file
+  mutation = True # Analyze mutations. True or False
+  output_path = '/home/...' # Path of the output folders
+  pdb_reference_sequence = '/home/.../PDB-CAT/*.cif'  # Path to the pdb file that will be the reference sequence
+  entity_reference = 0 # '0' means that the first _entity_poly of the pdb_reference_sequence will be the reference sequence
 
-    mutation = True
+```
 
-- Path of the output folders
-    
-    output_path = /home/...'
-
-- Path to the pdb file that will be the reference sequence
-    
-    pdb_reference_sequence = '/home/.../PDB-CAT/*.cif' 
-
-- '0' means that the first _entity_poly of the pdb_reference_sequence will be the reference sequence
-    
-    entity_reference = 0 
-
-## Choose to use mutation filter
+### Choose to use mutation filter
 Mutation = True to use the mutation filter
     It is useful in case you are using the same protein dataset of structures
+    
 Mutation = False
     It is useful in case your are working with different proteins
+## Blacklist
 
-# Blacklist
 The blacklist collects over 280 solvent, ion, co-factor, etc. codes that can bond to the protein structure. 
-It is a text file that users can modify in case new codes are found.
+It is a text file that users can modify in case new codes are found, or in case co-factor and solvent are interesting to the analysis.
 
-# Main Protease SARS-CoV-2 Example
-Users can follow the procedure in the example directory, making modifications to the main code variables and exploring their possibilities.
+
+## Usage/Examples
+
+Main Protease SARS-CoV-2 Example
+
+Users can follow the procedure in the example directory, making modifications to the main code variables and exploring their possibilities
