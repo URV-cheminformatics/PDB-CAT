@@ -1,5 +1,4 @@
-<img src="image_documentation/PDB_CAT.png" width="400">
-
+<img src="image_documentation/PDB_CAT.png" width="200">
 
 # PDB-CAT: Classification and Analysis Tool (beta version)
 
