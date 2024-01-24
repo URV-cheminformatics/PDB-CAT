@@ -1,5 +1,3 @@
-![Logo](https://github.com/URV-cheminformatics/PDB-CAT/blob/main/image_documentation/PDBCAT.png)
-
 # PDB-CAT: Classification and Analysis Tool (beta version) 
 
 PDB-CAT is a Jupyter Notebook that aims to automatically categorize the PDB structures based on the type of interaction between atoms in the protein and the ligand, and checking for any mutations in the sequence. PDB-CAT is a program that classifies a group of protein structures into three categories: free-ligand, covalent bonded, and non-covalent bonded. Besides the classification, the program can verifies if there are any mutations in the protein sequence by comparing it to a reference sequence. The program outputs a CSV file with structural information, which can then be used for further analysis, such as virtual screening or molecular docking. PDB-CAT is user-friendly and can be customized to meet specific needs.
@@ -67,6 +65,8 @@ Mutation = True to use the mutation filter
     
 Mutation = False
     It is useful in case your are working with different proteins
+
+    
 ## Blacklist
 
 The blacklist collects over 280 solvent, ion, co-factor, etc. codes that can bond to the protein structure. 
