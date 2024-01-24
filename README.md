@@ -60,11 +60,9 @@ To run this project, you will need to add the following variables to your main c
 ```
 
 ### Choose to use mutation filter
-Mutation = True to use the mutation filter
-    It is useful in case you are using the same protein dataset of structures
+Mutation = True (useful in case you are using the same protein dataset of structures)
     
-Mutation = False
-    It is useful in case your are working with different proteins
+Mutation = False (useful in case your are working with different proteins)
 
 
 ## Blacklist
