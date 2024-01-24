@@ -1,4 +1,4 @@
-![Logo](https://github.com/URV-cheminformatics/PDB-CAT/tree/main/image_documentation/PDB_CAT.png)
+<img src="image_documentation/PDB_CAT.png" width="400">
 
 
 # PDB-CAT: Classification and Analysis Tool (beta version)
