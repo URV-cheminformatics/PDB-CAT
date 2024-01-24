@@ -66,11 +66,11 @@ Mutation = True to use the mutation filter
 Mutation = False
     It is useful in case your are working with different proteins
 
-    
+
 ## Blacklist
 
-The blacklist collects over 280 solvent, ion, co-factor, etc. codes that can bond to the protein structure. 
-It is a text file that users can modify in case new codes are found, or in case co-factor and solvent are interesting to the analysis.
+The blacklist compiles more than 280 codes for solvents, ions, co-factors, and other substances capable of bonding with the protein structure. 
+This information is stored in a text file that users can edit, allowing for the inclusion of new codes or adjustments related to the significance of co-factors and solvents in the analysis.
 
 
 ## Usage/Examples
