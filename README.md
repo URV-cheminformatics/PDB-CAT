@@ -10,7 +10,7 @@ PDB-CAT is a Jupyter Notebook that aims to automatically categorize the PDB stru
 
 ## Installation
 
-Python3.10 is required.
+Python3.10 or higher is required.
 Install required packages using:
 
 ```bash
