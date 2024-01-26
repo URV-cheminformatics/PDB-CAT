@@ -29,7 +29,7 @@ Option 1. Clone
 
 Option 2. Download
 
-1. Click on the green botton named '<>Code', on the top right corner 
+1. Click on the green button labeled '<>Code' in the top right corner
 2. Select 'Download zip'
 
 You now have a copy of the repository's files saved as a zip file on your local computer. You can edit and customize the files for your own purposes.
