@@ -16,7 +16,29 @@ Install required packages using:
 ```bash
   pip install -r requirements.txt
 ```
-    
+
+
+## Quickstart
+
+Option 1. Clone 
+
+```bash
+  git clone https://github.com/URV-cheminformatics/PDB-CAT.git
+
+```
+
+Option 2. Download
+
+1. Click on the green botton named '<>Code', on the top right corner 
+2. Select 'Download zip'
+
+You now have a copy of the repository's files saved as a zip file on your local computer. You can edit and customize the files for your own purposes.
+
+For more information:
+
+[Downloading files from GitHub webpage](https://docs.github.com/en/get-started/quickstart/downloading-files-from-github)
+
+
 ## Dataset
 
 In order to create the Dataset there are two options:
