@@ -67,6 +67,7 @@ In order to create the Dataset there are two options:
   gunzip *.gz # Decompress downloaded .gz
 ```
 
+Note: The dataset must be in the /cif directory before executing the program.
 
 ## Variables
 
