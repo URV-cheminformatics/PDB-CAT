@@ -3,7 +3,7 @@
 '''
 Import libraries
 '''
-from PDBCAT_module import *
+
 from pdbecif.mmcif_io import CifFileReader
 from pdbecif.mmcif_tools import MMCIF2Dict
 import pandas as pd
@@ -158,7 +158,7 @@ def process_cif_file(file_path, mutation, blacklist, seq_ref, res_threshold):
     if it is peptide-like complex, the type of the bond and the name of the ligand
     """
 
-    # Process CIF file
+    # Función para procesar un archivo CIF y extraer la información requerida
     cfr = CifFileReader()
     cif_obj = cfr.read(file_path, output='cif_wrapper', ignore=['_atom_site']) # if we are interested in data annotations only and not in coordinates, we can discard the category _atom_site with ignore=['_atom_site'].
     cif_data = list(cif_obj.values())[0]
@@ -174,7 +174,7 @@ def process_cif_file(file_path, mutation, blacklist, seq_ref, res_threshold):
     identity_list = [] 
     gaps_list = []
     blacklist_id =[]
-    peptide_like='No' # if a complex contains one peptide_like ligand, this variable will be 'Yes'
+    type_ligand='Small-molecule' # if a complex contains one peptide_like ligand, this variable will be 'Yes'
     covalent='No' # if one ligand is found to have a covalent bond with the protein, the pdb id is considered covalent='Yes'
     covalent_bond=''
     bond=''
@@ -187,7 +187,6 @@ def process_cif_file(file_path, mutation, blacklist, seq_ref, res_threshold):
         if i[1] == 'polymer': # if _entity.type is 'polymer' we deduce it is the protein or a peptide ligand  
 
             if i[2] == 'syn': # if _entity.src_method is 'syn', we classify synthetic polymers as peptide ligands
-                peptide_like='Yes'
                 ligand_names.append(i[3])
                 asym_id=search_asym_id(cif_data,entity_id)
                 for id_a in asym_id.split(','):
@@ -199,6 +198,8 @@ def process_cif_file(file_path, mutation, blacklist, seq_ref, res_threshold):
                     pep_code=search_peptide_code(cif_data,id_a) # Search if the peptide ligand has a prd.id code, such as 'PRD_000338'
                     if pep_code != None:
                         if pep_code not in ligands: ligands.append(pep_code)
+                        type_ligand = cif_data['_pdbx_molecule_features']['type']
+                        type_ligand = '\n'.join(type_ligand)
                     else: # Ih the peptide code has not a prd.id code, search the _entity_poly.pdbx_seq_one_letter_code
                         seq_one_letter_code=search_peptide_seq_one_letter_code(cif_data,entity_id)
                         if seq_one_letter_code != None:
@@ -210,9 +211,9 @@ def process_cif_file(file_path, mutation, blacklist, seq_ref, res_threshold):
                 if check_polypeptide(cif_data, entity_id) == 'Yes': # Only 'polypeptide(L)' polymers are considered as the main polymers of the structure
                     seq = search_peptide_seq_one_letter_code_can(cif_data,entity_id)
                       
-                    # check if its a peptide 
+                    # check if its a peptide NEW PART
                     if len(seq) < res_threshold:
-                        peptide_like='Yes' 
+                        peptide_like='Yes' # Es pot assumir que tots seran peptide-like?
                         ligand_names.append(i[3])
                         asym_id=search_asym_id(cif_data,entity_id)
                         for id_a in asym_id.split(','):
@@ -234,12 +235,49 @@ def process_cif_file(file_path, mutation, blacklist, seq_ref, res_threshold):
                         
                         mismatches, mismatch_location, identity, gaps = (None, None, None, None)
                         if mutation == True:
-                            mismatches, mismatch_location, identity, gaps = search_for_mutation(seq_ref,seq) 
-                        
+                            mismatches, mismatch_location, identity, gaps = search_for_mutation(seq_ref,seq)  # Ho pot diverses vegades, depen del nombre entity_ids, pero nomes es queda amb el darrer resultat
+
                         mismatches_list.append(mismatches)
                         mismatch_location_list.append(mismatch_location)
                         identity_list.append(identity)
                         gaps_list.append(gaps)  
+
+        if i[1] == 'branched':
+            if cif_data['_pdbx_molecule_features']:
+                type_ligand = cif_data['_pdbx_molecule_features']['type']
+                type_ligand = '\n'.join(type_ligand) 
+                asym_id=search_asym_id(cif_data,entity_id)
+                for id_a in asym_id.split(','):
+                    covalent_bond=check_covalent(cif_data,id_a)
+                    if covalent_bond:
+                        covalent='Yes'
+                        bond=covalent_bond                    
+
+                    pep_code=search_peptide_code(cif_data,id_a) # Search if the peptide ligand has a prd.id code, such as 'PRD_000338'
+                    if pep_code != None:
+                        if pep_code not in ligands: ligands.append(pep_code)
+                    else: # Ih the peptide code has not a prd.id code, search the _entity_poly.pdbx_seq_one_letter_code
+                        seq_one_letter_code=search_peptide_seq_one_letter_code(cif_data,entity_id)
+                        if seq_one_letter_code != None:
+                            if seq_one_letter_code not in ligands: ligands.append(seq_one_letter_code)
+                        else:
+                            if i[3] not in ligands: ligands.append(i[3])     
+            
+            if cif_data['_pdbx_entity_branch']:
+                type_ligand = cif_data['_pdbx_entity_branch']['type']
+                type_ligand = '\n'.join(type_ligand)
+                asym_id = search_asym_id(cif_data, entity_id)
+                
+                for id_a in asym_id.split(','):
+                    covalent_bond = check_covalent(cif_data, id_a)
+                    
+                    if covalent_bond:
+                        covalent = 'Yes'
+                        bond = covalent_bond 
+                        
+                    ligands.append(str(cif_data['_pdbx_entity_branch_list']['comp_id']))
+                    ligand_names.append(str(cif_data['_pdbx_entity_branch_descriptor']['descriptor']))
+
 
         elif i[1] == 'non-polymer': # non-polymer could be ligands or small-molecules from the medium
             ligand_code=search_ligand_code(cif_data,entity_id) # From the entity_id, search the ligand_code or sequence (for peptides without a code)
@@ -257,10 +295,10 @@ def process_cif_file(file_path, mutation, blacklist, seq_ref, res_threshold):
 
     chain=','.join(chain) # We join all the chains
     nchain=chain.count(',')+1
-    num_res=', '. join(num_res)
-    ligand_names='\n'. join(ligand_names)
+    num_res=', '.join(num_res)
+    ligand_names='\n'.join(ligand_names)
     pols='\n'.join(pols)
-    blacklist_id='\n'. join(blacklist_id)
+    blacklist_id='\n'.join(blacklist_id)
     
     if not ligands: complex='No'
     else: complex ='Yes'
@@ -287,7 +325,7 @@ def process_cif_file(file_path, mutation, blacklist, seq_ref, res_threshold):
         "Descarted_Ligands": blacklist_id,
         "Ligand": ligands,
         "Ligand_names": ligand_names,
-        "Peptide_like": peptide_like,
+        "Type_Ligand": type_ligand,
         "Covalent_Bond": covalent,
         "Bond": bond,
         "Mutation": mismatches,
