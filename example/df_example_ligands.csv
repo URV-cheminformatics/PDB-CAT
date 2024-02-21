@@ -1,0 +1,90 @@
+ID,Molecule,Name,Type,Function,Covalent,Bond
+7TQ5,IRW,"(1S,2S)-1-hydroxy-2-{[N-({[(1R,2R)-2-(4-methoxyphenyl)cyclopropyl]methoxy}carbonyl)-L-leucyl]amino}-3-[(3S)-2-oxopyrrolidin-3-yl]propane-1-sulfonic acid",non-polymer,"
+",Yes,CYS145 B
+7TQ5,CL,CHLORIDE ION,Discarded,"
+",,
+7TQ5,ITX,"(1R,2S)-1-hydroxy-2-{[N-({[(1R,2R)-2-(4-methoxyphenyl)cyclopropyl]methoxy}carbonyl)-L-leucyl]amino}-3-[(3S)-2-oxopyrrolidin-3-yl]propane-1-sulfonic acid",non-polymer,"
+",Yes,CYS145 B
+7TQ5,PG4,TETRAETHYLENE GLYCOL,Discarded,"
+",,
+5RF1,T5G,4-bromobenzene-1-sulfonamide,non-polymer,,No,
+5RF1,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+7BAK,SE,SELENIUM ATOM,Discarded,,,
+5RE4,SZY,N-(4-methylpyridin-3-yl)acetamide,non-polymer,,No,
+5RE4,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+5R7Y,JFM,N-(2-phenylethyl)methanesulfonamide,non-polymer,,No,
+5R7Y,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+5R7Y,CL,CHLORIDE ION,Discarded,,,
+8GXH,0AX,"N-[(2S)-3-cyclohexyl-1-oxidanylidene-1-[[(2S,3R)-3-oxidanyl-4-oxidanylidene-1-[(3S)-2-oxidanylidenepiperidin-3-yl]-4-[(phenylmethyl)amino]butan-2-yl]amino]propan-2-yl]-1-benzofuran-2-carboxamide",non-polymer,,Yes,CYS145 A
+5REB,T0Y,1-[(thiophen-3-yl)methyl]piperidin-4-ol,non-polymer,,No,
+5REB,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+5REK,T1Y,1-{4-[(3-fluorophenyl)sulfonyl]piperazin-1-yl}ethan-1-one,non-polymer,,Yes,CYS145 A
+5REK,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+6YNQ,P6N,"(2~{S})-2-methyl-3,4-dihydro-2~{H}-naphthalen-1-one",non-polymer,,Yes,CYS145 A
+6YNQ,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+6YNQ,CL,CHLORIDE ION,Discarded,,,
+5RGI,U0P,"N'-cyclopropyl-N-methyl-N-[(5-methyl-1,2-oxazol-3-yl)methyl]urea",non-polymer,,No,
+5RGI,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+7AEG,PRD_000338,N-[(benzyloxy)carbonyl]-L-valyl-N-[(1S)-1-(carboxymethyl)-3-fluoro-2-oxopropyl]-L-alaninamide,Peptide-like,Inhibitor,Yes,CYS145 A
+7AEG,DMS,DIMETHYL SULFOXIDE,Discarded,Inhibitor,,
+7Z4S,(ACE)(DTY)FH(II7)LNLGYRPGC(NH2),Macrocyclic peptide inhibitor,polypeptide(L),,No,
+7Z4S,PEG,DI(HYDROXYETHYL)ETHER,Discarded,,,
+7Z4S,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+7Z4S,EDO,"1,2-ETHANEDIOL",Discarded,,,
+7Z4S,PGE,TRIETHYLENE GLYCOL,Discarded,,,
+7A1U,FUA,FUSIDIC ACID,non-polymer,,No,
+7A1U,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+7A1U,IMD,IMIDAZOLE,Discarded,,,
+6W63,X77,N-(4-tert-butylphenyl)-N-[(1R)-2-(cyclohexylamino)-2-oxo-1-(pyridin-3-yl)ethyl]-1H-imidazole-4-carboxamide,non-polymer,,No,
+7JR4,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+8DDL,PGE,TRIETHYLENE GLYCOL,Discarded,,,
+8DDL,NA,SODIUM ION,Discarded,,,
+8DDL,PEG,DI(HYDROXYETHYL)ETHER,Discarded,,,
+8DDL,EDO,"1,2-ETHANEDIOL",Discarded,,,
+7WQ9,(P6S)I(GME)T(FL6)(CF0),Z-IETD-FMK,polypeptide(L),,Yes,CYS145 A
+7P51,5P9,"N-(5-chloropyridin-2-yl)-3-oxo-2,3-dihydro-1H-indene-1-carboxamide",non-polymer,,No,
+7P51,NA,SODIUM ION,Discarded,,,
+7P51,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+6LU7,PRD_002214,"N-[(5-METHYLISOXAZOL-3-YL)CARBONYL]ALANYL-L-VALYL-N~1~-((1R,2Z)-4-(BENZYLOXY)-4-OXO-1-{[(3R)-2-OXOPYRROLIDIN-3-YL]METHYL}BUT-2-ENYL)-L-LEUCINAMIDE",Peptide-like,Inhibitor,Yes,CYS145 A
+8DRW,NA,SODIUM ION,Discarded,,,
+8DRW,1PE,PENTAETHYLENE GLYCOL,Discarded,,,
+8DRW,PEG,DI(HYDROXYETHYL)ETHER,Discarded,,,
+8DRW,PO4,PHOSPHATE ION,Discarded,,,
+7WQ8,(P6S)(FL6)(GME)V(FL6)(CF0),Z-DEVD-FMK,polypeptide(L),,Yes,CYS145 A
+5RF2,HVB,1-azanylpropylideneazanium,non-polymer,,No,
+5RF2,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+7ANS,RNW,2-[(diphenylmethyl)-oxidanyl-$l^{3}-sulfanyl]-~{N}-oxidanyl-ethanamide,non-polymer,,No,
+7ANS,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+8DRY,PEG,DI(HYDROXYETHYL)ETHER,Discarded,,,
+5REL,T2G,1-{4-[(3-methylphenyl)methyl]piperazin-1-yl}ethan-1-one,non-polymer,,Yes,CYS145 A
+5REL,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+6XB0,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+7AQE,RV5,"N-1,2,3-Benzothiadiazol-6-yl-N'-[2-oxo-2-(1-piperidinyl)ethyl]urea also called unc-2327",non-polymer,,No,
+7AQE,CL,CHLORIDE ION,Discarded,,,
+7AQE,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+8DRV,1PE,PENTAETHYLENE GLYCOL,Discarded,,,
+5R8T,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+7B83,PK8,"9-oxa-7-thia-1-azonia-8$l^{2}-zincabicyclo[4.3.0]nona-1,3,5-triene",non-polymer,,No,
+7B83,IMD,IMIDAZOLE,Discarded,,,
+7B83,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+7B83,CL,CHLORIDE ION,Discarded,,,
+7AP6,RQN,4-(4-ethyl-5-fluoranyl-2-oxidanyl-phenoxy)-3-fluoranyl-benzamide,non-polymer,,No,
+6XA4,PRD_002391,inhibitor UAW241,Oligopeptide,Inhibitor,Yes,CYS145 A
+6XA4,GOL,GLYCEROL,Discarded,Inhibitor,,
+6M2N,3WL,"5,6,7-trihydroxy-2-phenyl-4H-chromen-4-one",non-polymer,,No,
+5REJ,T1V,1-{4-[(thiophen-2-yl)sulfonyl]piperazin-1-yl}ethan-1-one,non-polymer,,Yes,CYS145 A
+5REJ,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+8DRX,NA,SODIUM ION,Discarded,,,
+8GVY,(ACY)AI(0A9),"3-PYRIDIN-4-YL-2,4-DIHYDRO-INDENO[1,2-.C.]PYRAZOLE",polypeptide(L),,Yes,CYS145 A
+5RG1,T9J,Nalpha-acetyl-N-(3-bromoprop-2-yn-1-yl)-L-tyrosinamide,non-polymer,,No,
+5RG1,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+7RNW,(ACE)(DTY)LQYAVLRHKRRE(9OW),ACE-DTY-LEU-GLN-TYR-ALA-VAL-LEU-ARG-HIS-LYS-ARG-ARG-GLU-SEC,polypeptide(L),,No,
+8DRR,NA,SODIUM ION,Discarded,,,
+5R80,RZG,methyl 4-sulfamoylbenzoate,non-polymer,,No,
+5R80,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+7VVT,80X,N-(3-chlorophenyl)-2-[(2R)-1-ethanoyl-3-oxidanylidene-piperazin-2-yl]ethanamide,non-polymer,,No,
+7BAL,SE,SELENIUM ATOM,Discarded,,,
+7L14,XFD,"2-{3-[3-chloro-5-(cyclopropylmethoxy)phenyl]-2-oxo[2H-[1,3'-bipyridine]]-5-yl}benzonitrile",non-polymer,,No,
+8DRU,PO4,PHOSPHATE ION,Discarded,,,
+8DRU,PEG,DI(HYDROXYETHYL)ETHER,Discarded,,,
+8DRU,1PE,PENTAETHYLENE GLYCOL,Discarded,,,

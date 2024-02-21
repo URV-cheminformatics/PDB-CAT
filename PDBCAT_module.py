@@ -38,7 +38,8 @@ def read_blacklist(blacklist_path):
             if not line.startswith('#'):
                 columns = line.split()
                 key = columns[0].rstrip(',')
-                value = columns[1]
+                value = columns[1:len(columns)]
+                value = " ".join(value)
                 blacklist_dict[key.upper()] = value
 
         blacklist = list(blacklist_dict.keys())  
@@ -217,6 +218,7 @@ def search_for_mutation(reference_seq, one_letter_seq):
 
     # Extract the count of mismatches
     mismatches = alignment.counts()[2]
+    
     # Where is the mismatch
     n = 0
     mismatch_location = []
@@ -236,7 +238,7 @@ def process_cif_file(file_path, mutation, blacklist, seq_ref, res_threshold):
     if it is peptide-like complex, the type of the bond and the name of the ligand
     """
 
-    # Función para procesar un archivo CIF y extraer la información requerida
+    # Function to process a CIF file and extract the required information
     cfr = CifFileReader()
     cif_obj = cfr.read(file_path, output='cif_wrapper', ignore=['_atom_site']) # if we are interested in data annotations only and not in coordinates, we can discard the category _atom_site with ignore=['_atom_site'].
     cif_data = list(cif_obj.values())[0]
@@ -286,8 +288,10 @@ def process_cif_file(file_path, mutation, blacklist, seq_ref, res_threshold):
                         ligand_details[ligand_id]['function'] = ligand_function
                         ligand_details[ligand_id]['name'] = entity_pdbx_description
                         ligand_details[ligand_id]['entity'] = entity_id             
+                
                 else: # Only 'polypeptide(L)' polymers, not synthetics are considered as the main polymers of the structure
                     seq = search_peptide_seq_one_letter_code_can(cif_data,entity_id)
+                    
                     if len(seq) < res_threshold: # Small peptides are considered ligands
                         ligand_id, ligand_function, ligand_type = ligand_info(cif_data,entity_id,asym_id[0],entity_type,entity_pdbx_description)
                         ligands.append(ligand_id)
@@ -534,6 +538,7 @@ def bond_classification(directory_path, information_df, no_mutated_list, output_
     free_enzyme_list = []
     covalent_list = []
     non_covalent_list = []
+    type_bond = ''
 
     with open(information_df, 'r') as f:
         df = pd.read_csv(f)
@@ -544,9 +549,10 @@ def bond_classification(directory_path, information_df, no_mutated_list, output_
                     
             else:
                 if row['PDB_ID'] in no_mutated_list:
-                    if row['Covalent_Bond'] == 'Yes':
+                    type_bond = row['Covalent_Bond']
+                    if 'Yes' in type_bond:
                         covalent_list.append(row['PDB_ID'])
-                    elif row['Covalent_Bond'] == 'No':
+                    else: 
                         non_covalent_list.append(row['PDB_ID'])
 
     if mutation == False:
