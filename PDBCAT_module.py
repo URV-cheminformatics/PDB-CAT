@@ -460,7 +460,7 @@ def process_cif_file(file_path, mutation, blacklist, seq_ref, res_threshold):
         "Chain_ID": chain,
         "Num_Res": num_res,
         "Complex": complex,
-        "Descarted_Ligands": blacklist_id,
+        "Discarted_Ligands": blacklist_id,
         "Branched": branched,
         "Branched_name": branched_names,
         "Branched_type": branched_types,

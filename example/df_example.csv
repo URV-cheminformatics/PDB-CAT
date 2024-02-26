@@ -1,4 +1,4 @@
-PDB_ID,Title,Protein_description,NChain,Chain_ID,Num_Res,Complex,Descarted_Ligands,Branched,Branched_name,Branched_type,Branched_functions,Branched_Covalent,Branched_Bond,Ligand,Ligand_names,Ligand_types,Ligand_functions,Covalent_Bond,Bond,Mutation,Mutation_Location,Identity,Gaps
+PDB_ID,Title,Protein_description,NChain,Chain_ID,Num_Res,Complex,Discarted_Ligands,Branched,Branched_name,Branched_type,Branched_functions,Branched_Covalent,Branched_Bond,Ligand,Ligand_names,Ligand_types,Ligand_functions,Covalent_Bond,Bond,Mutation,Mutation_Location,Identity,Gaps
 7TQ5,Structure of SARS-CoV-2 3CL protease in complex with the cyclopropane based inhibitor 10d,3C-like proteinase,2,"A,B",309,Yes,"CL
 PG4",,,,,,,"IRW
 ITX","(1S,2S)-1-hydroxy-2-{[N-({[(1R,2R)-2-(4-methoxyphenyl)cyclopropyl]methoxy}carbonyl)-L-leucyl]amino}-3-[(3S)-2-oxopyrrolidin-3-yl]propane-1-sulfonic acid
