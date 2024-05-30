@@ -228,7 +228,7 @@ def search_for_mutation(reference_seq, one_letter_seq):
             n=n+1
             if i!=j and j!='-':
                 mismatch_location.append(i+str(n)+j)
-    
+
     return mismatches, mismatch_location, identity, gaps
 
 
@@ -237,7 +237,7 @@ def process_cif_file(file_path, mutation, blacklist, seq_ref, res_threshold):
     Process the cif file analyzing specific data as: ID, chain, number of residues, if it is a complex, 
     if it is peptide-like complex, the type of the bond and the name of the ligand
     """
-
+     
     # Function to process a CIF file and extract the required information
     cfr = CifFileReader()
     cif_obj = cfr.read(file_path, output='cif_wrapper', ignore=['_atom_site']) # if we are interested in data annotations only and not in coordinates, we can discard the category _atom_site with ignore=['_atom_site'].
@@ -266,7 +266,8 @@ def process_cif_file(file_path, mutation, blacklist, seq_ref, res_threshold):
     branched_functions=[]
     branched_covalents=[]
     branched_covalents_bond=[]
-    pdb_id = cif_data['_entry']['id'][0] # The PDB ID
+    # pdb_id = cif_data['_entry']['id'][0] # The PDB ID
+    pdb_id = file_path[-8:-4]
     title = cif_data['_struct']['title'][0]
 
     for i in list(zip(cif_data['_entity']['id'],cif_data['_entity']['type'],cif_data['_entity']['src_method'],cif_data['_entity']['pdbx_description'])):
@@ -493,7 +494,7 @@ def mutation_classification(directory_path, information_df, output_path):
     current_datetime = datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
 
     with open(information_df, 'r') as f:
-        df = pd.read_csv(f)
+        df = pd.read_csv(f, dtype={'Mutation':str})
         for index, row in df.iterrows():
             if row['Mutation'] == '0':
                 no_mutated_list.append(row['PDB_ID'])
@@ -518,14 +519,13 @@ def mutation_classification(directory_path, information_df, output_path):
 
 
     for mutated in mutated_list:
-        pdb_id = mutated.lower()
+        pdb_id = mutated
         shutil.copy(origin_path+(pdb_id+".cif"), mut_path+(pdb_id+".cif"))
-
+        
     for no_mutated in no_mutated_list:
-        pdb_id = no_mutated.lower()
+        pdb_id = no_mutated
         shutil.copy(origin_path+(pdb_id+".cif"), non_mut_path +(pdb_id+".cif"))
-
-
+    
     return no_mutated_list, non_mut_path 
 
 
@@ -570,21 +570,21 @@ def bond_classification(directory_path, information_df, no_mutated_list, output_
             os.makedirs(path)
 
     for free in free_enzyme_list:
-        pdb_id = free.lower() + ".cif"
+        pdb_id = free + ".cif"
         if mutation == True:
             shutil.move(origin_path+(pdb_id), free_path+(pdb_id))
         if mutation == False:
             shutil.copy(origin_path+(pdb_id), free_path+(pdb_id))
 
     for covalent in covalent_list:
-        pdb_id = covalent.lower() + ".cif"
+        pdb_id = covalent + ".cif"
         if mutation == True:
             shutil.move(origin_path+(pdb_id), covalent_path+(pdb_id))
         if mutation == False:
             shutil.copy(origin_path+(pdb_id), covalent_path+(pdb_id))
 
     for non_covalent in non_covalent_list:
-        pdb_id = non_covalent.lower() + ".cif"
+        pdb_id = non_covalent + ".cif"
         if mutation == True:
             shutil.move(origin_path+(pdb_id), non_covalent_path+(pdb_id))
         if mutation == False:
