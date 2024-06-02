@@ -1,4 +1,0 @@
-PDB_ID,Title,Protein_description,NChain,Chain_ID,Num_Res,Complex,Discarted_Ligands,Branched,Branched_name,Branched_type,Branched_functions,Branched_Covalent,Branched_Bond,Ligand,Ligand_names,Ligand_types,Ligand_functions,Covalent_Bond,Bond,Mutation,Mutation_Location,Identity,Gaps
-5r7y,PanDDA analysis group deposition -- Crystal Structure of COVID-19 main protease in complex with Z45617795,3C-like proteinase,1,A,306,Yes,"DMS
-CL",,,,,,,JFM,N-(2-phenylethyl)methanesulfonamide,non-polymer,,No,,None,None,None,None
-5r8t,"PanDDA analysis group deposition of ground-state model of SARS-CoV-2 main protease screened against DSI poised (Enamine), Fraglites and Peplites (Newcastle university), Mini Frags (Astex), York 3D (York university), electrophile cysteine covalent (Weizman institute) fragment libraries",3C-like proteinase,1,A,306,No,DMS,,,,,,,,,,,,,None,None,None,None
