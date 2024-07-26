@@ -104,3 +104,10 @@ This information is stored in a text file that users can edit, allowing for the 
 Main Protease SARS-CoV-2 Example
 
 Users can follow the procedure in the example directory, making modifications to the main code variables and exploring their possibilities
+
+
+## Extra
+
+**Best-poster Prize in Strabourg Summer School in Chemoinformatics 2024**
+
+<img src="image_documentation/last-version-PDB-CAT.png" width="800">
