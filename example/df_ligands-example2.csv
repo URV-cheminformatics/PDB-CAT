@@ -1,0 +1,98 @@
+ID,Molecule,Name,Type,Function,Covalent,Bond
+7tq5,IRW,"(1S,2S)-1-hydroxy-2-{[N-({[(1R,2R)-2-(4-methoxyphenyl)cyclopropyl]methoxy}carbonyl)-L-leucyl]amino}-3-[(3S)-2-oxopyrrolidin-3-yl]propane-1-sulfonic acid",non-polymer,"
+",Yes,CYS145 A; CYS145 B
+7tq5,CL,CHLORIDE ION,Discarded,"
+",,
+7tq5,ITX,"(1R,2S)-1-hydroxy-2-{[N-({[(1R,2R)-2-(4-methoxyphenyl)cyclopropyl]methoxy}carbonyl)-L-leucyl]amino}-3-[(3S)-2-oxopyrrolidin-3-yl]propane-1-sulfonic acid",non-polymer,"
+",Yes,CYS145 A; CYS145 B
+7tq5,PG4,TETRAETHYLENE GLYCOL,Discarded,"
+",,
+3e37,PRD_900003,beta-D-fructofuranose-(2-1)-alpha-D-glucopyranose,Oligosaccharide,"Nutrient
+",No,
+3e37,ZN,ZINC ION,Discarded,"Nutrient
+",,
+3e37,ED5,tert-butyl 4-({(2-{(4-cyanophenyl)[(1-methyl-1H-imidazol-5-yl)methyl]amino}ethyl)[(2-methylphenyl)sulfonyl]amino}methyl)piperidine-1-carboxylate,non-polymer,"Nutrient
+",No,
+5r7y,JFM,N-(2-phenylethyl)methanesulfonamide,non-polymer,,No,
+5r7y,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+5r7y,CL,CHLORIDE ION,Discarded,,,
+11gs,EAA,ETHACRYNIC ACID,non-polymer,,No,
+11gs,GSH,GLUTATHIONE,Discarded,,,
+11gs,MES,2-(N-MORPHOLINO)-ETHANESULFONIC ACID,Discarded,,,
+1apw,(IVA)VV(DFI)(NME),INHIBITOR ISOVALERYL (IVA)-VAL-VAL-DIFLUOROSTATINE-N-METHYLAMINE,polypeptide(L),"
+
+
+",No,
+1apw,SO4,SULFATE ION,Discarded,"
+
+
+",,
+1apw,MAN,alpha-D-mannopyranose,"D-saccharide, alpha linking","
+
+
+",(O-Glycosylation),SER3 A
+1apw,HSY,alpha-L-xylopyranose,"L-saccharide, alpha linking","
+
+
+",(GLYCOSYLATION SITE),THR7 A
+1apw,DMF,DIMETHYLFORMAMIDE,non-polymer,"
+
+
+",No,
+7aeg,PRD_000338,N-[(benzyloxy)carbonyl]-L-valyl-N-[(1S)-1-(carboxymethyl)-3-fluoro-2-oxopropyl]-L-alaninamide,Peptide-like,Inhibitor,Yes,CYS145 A
+7aeg,DMS,DIMETHYL SULFOXIDE,Discarded,Inhibitor,,
+7z4s,(ACE)(DTY)FH(II7)LNLGYRPGC(NH2),Macrocyclic peptide inhibitor,polypeptide(L),,No,
+7z4s,PEG,DI(HYDROXYETHYL)ETHER,Discarded,,,
+7z4s,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+7z4s,EDO,"1,2-ETHANEDIOL",Discarded,,,
+7z4s,PGE,TRIETHYLENE GLYCOL,Discarded,,,
+3w37,"2-acetamido-2-deoxy-beta-D-glucopyranose-(1-4)-2-acetamido-2-deoxy-beta-D-glucopyranose,","2-acetamido-2-deoxy-beta-D-glucopyranose-(1-4)-2-acetamido-2-deoxy-beta-D-glucopyranose,","oligosaccharide,","
+
+Inhibitor",(N-Glycosylation),ASN823 A
+3w37,ACY,ACETIC ACID,Discarded,"
+
+Inhibitor",,
+3w37,"alpha-L-fucopyranose-(1-3)-[2-acetamido-2-deoxy-beta-D-glucopyranose-(1-4)]2-acetamido-2-deoxy-beta-D-glucopyranose,","alpha-L-fucopyranose-(1-3)-[2-acetamido-2-deoxy-beta-D-glucopyranose-(1-4)]2-acetamido-2-deoxy-beta-D-glucopyranose,","oligosaccharide,","
+
+Inhibitor",(N-Glycosylation),ASN404 A
+3w37,GOL,GLYCEROL,Discarded,"
+
+Inhibitor",,
+3w37,PRD_900007,"4,6-dideoxy-4-{[(1S,4R,5S,6S)-4,5,6-trihydroxy-3-(hydroxymethyl)cyclohex-2-en-1-yl]amino}-alpha-D-glucopyranose-(1-4)-alpha-D-glucopyranose-(1-4)-alpha-D-glucopyranose",Oligosaccharide,"
+
+Inhibitor",No,
+3w37,SO4,SULFATE ION,Discarded,"
+
+Inhibitor",,
+3w37,NAG,2-acetamido-2-deoxy-beta-D-glucopyranose,Discarded,"
+
+Inhibitor",,
+8ddl,PGE,TRIETHYLENE GLYCOL,Discarded,,,
+8ddl,NA,SODIUM ION,Discarded,,,
+8ddl,PEG,DI(HYDROXYETHYL)ETHER,Discarded,,,
+8ddl,EDO,"1,2-ETHANEDIOL",Discarded,,,
+7wq9,(P6S)I(GME)T(FL6)(CF0),Z-IETD-FMK,polypeptide(L),,Yes,CYS145 A
+6lu7,PRD_002214,"N-[(5-METHYLISOXAZOL-3-YL)CARBONYL]ALANYL-L-VALYL-N~1~-((1R,2Z)-4-(BENZYLOXY)-4-OXO-1-{[(3R)-2-OXOPYRROLIDIN-3-YL]METHYL}BUT-2-ENYL)-L-LEUCINAMIDE",Peptide-like,Inhibitor,Yes,CYS145 A
+7wq8,(P6S)(FL6)(GME)V(FL6)(CF0),Z-DEVD-FMK,polypeptide(L),,Yes,CYS145 A
+5r8t,DMS,DIMETHYL SULFOXIDE,Discarded,,,
+6xa4,PRD_002391,inhibitor UAW241,Oligopeptide,Inhibitor,Yes,CYS145 A
+6xa4,GOL,GLYCEROL,Discarded,Inhibitor,,
+7mb6,KVATVQ,LYS-VAL-ALA-THR-VAL-GLN,polypeptide(L),,No,
+1e03,"2-acetamido-2-deoxy-beta-D-glucopyranose-(1-4)-2-acetamido-2-deoxy-beta-D-glucopyranose,","2-acetamido-2-deoxy-beta-D-glucopyranose-(1-4)-2-acetamido-2-deoxy-beta-D-glucopyranose,","oligosaccharide,","
+
+Anticoagulant",(N-Glycosylation),ASN96 A
+1e03,NAG,2-acetamido-2-deoxy-beta-D-glucopyranose,Discarded,"
+
+Anticoagulant",,
+1e03,"beta-D-mannopyranose-(1-4)-2-acetamido-2-deoxy-beta-D-glucopyranose-(1-4)-2-acetamido-2-deoxy-beta-D-glucopyranose,","beta-D-mannopyranose-(1-4)-2-acetamido-2-deoxy-beta-D-glucopyranose-(1-4)-2-acetamido-2-deoxy-beta-D-glucopyranose,","oligosaccharide,","
+
+Anticoagulant",(N-Glycosylation),ASN155 A; ASN155 B; ASN192 B
+1e03,PRD_900031,"3,4-di-O-methyl-2,6-di-O-sulfo-alpha-D-glucopyranose-(1-4)-2,3-di-O-methyl-beta-D-glucopyranuronic acid-(1-4)-2,3,6-tri-O-sulfo-alpha-D-glucopyranose-(1-4)-3-O-methyl-2-O-sulfo-alpha-L-idopyranuronic acid-(1-4)-methyl 2,3,6-tri-O-sulfo-alpha-D-glucopyranoside",Oligosaccharide,"
+
+Anticoagulant",No,
+8gvy,(ACY)AI(0A9),"3-PYRIDIN-4-YL-2,4-DIHYDRO-INDENO[1,2-.C.]PYRAZOLE",polypeptide(L),,Yes,CYS145 A
+7rnw,(ACE)(DTY)LQYAVLRHKRRE(9OW),ACE-DTY-LEU-GLN-TYR-ALA-VAL-LEU-ARG-HIS-LYS-ARG-ARG-GLU-SEC,polypeptide(L),,No,
+6r0x,"beta-D-galactopyranose-(1-3)-[N-acetyl-alpha-neuraminic acid-(2-6)]2-acetamido-2-deoxy-alpha-D-galactopyranose,","beta-D-galactopyranose-(1-3)-[N-acetyl-alpha-neuraminic acid-(2-6)]2-acetamido-2-deoxy-alpha-D-galactopyranose,","oligosaccharide,","
+",(O-Glycosylation),THR73 E; THR73 F
+6r0x,"2-O-sulfo-alpha-L-idopyranuronic acid-(1-4)-2-deoxy-6-O-sulfo-2-(sulfoamino)-alpha-D-glucopyranose-(1-4)-2-O-sulfo-alpha-L-idopyranuronic acid-(1-4)-2-deoxy-6-O-sulfo-2-(sulfoamino)-alpha-D-glucopyranose-(1-4)-2-O-sulfo-alpha-L-idopyranuronic acid-(1-4)-2-deoxy-6-O-sulfo-2-(sulfoamino)-alpha-D-glucopyranose-(1-4)-2-O-sulfo-alpha-L-idopyranuronic acid-(1-4)-2-deoxy-6-O-sulfo-2-(sulfoamino)-alpha-D-glucopyranose,","2-O-sulfo-alpha-L-idopyranuronic acid-(1-4)-2-deoxy-6-O-sulfo-2-(sulfoamino)-alpha-D-glucopyranose-(1-4)-2-O-sulfo-alpha-L-idopyranuronic acid-(1-4)-2-deoxy-6-O-sulfo-2-(sulfoamino)-alpha-D-glucopyranose-(1-4)-2-O-sulfo-alpha-L-idopyranuronic acid-(1-4)-2-deoxy-6-O-sulfo-2-(sulfoamino)-alpha-D-glucopyranose-(1-4)-2-O-sulfo-alpha-L-idopyranuronic acid-(1-4)-2-deoxy-6-O-sulfo-2-(sulfoamino)-alpha-D-glucopyranose,","oligosaccharide,","
+",No,

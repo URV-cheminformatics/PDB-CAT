@@ -68,7 +68,8 @@ In order to create the Dataset there are two options:
   **-o** specifiy output path
 
 ```bash
-  ./batch_download.sh -f input.txt -c -o /output # execute to download by ID names
+  ./batch_download.sh -f input.txt -c -o ./output # execute to download by ID names
+  cd ./output
   gunzip *.gz # Decompress downloaded .gz
 ```
 
