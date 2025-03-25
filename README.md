@@ -4,13 +4,15 @@
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
-PDB-CAT is a Jupyter Notebook that aims to automatically categorize the PDB structures based on the type of interaction between atoms in the protein and the ligand, and checking for any mutations in the sequence. PDB-CAT is a program that classifies a group of protein structures into three categories: free-ligand, covalent bonded, and non-covalent bonded. Besides the classification, the program can verifies if there are any mutations in the protein sequence by comparing it to a reference sequence. The program outputs a CSV file with structural information, which can then be used for further analysis, such as virtual screening or molecular docking. PDB-CAT is user-friendly and can be customized to meet specific needs.
+<img src="image_documentation/PDB-CAT.png" width="500">
 
+PDB-CAT is a Jupyter Notebook that aims to automatically categorize the PDB structures based on the type of interaction between atoms in the protein and the ligand, and checking for any mutations in the sequence. 
+
+PDB-CAT is a program that classifies a group of protein structures based on their ligands into three categories: apo, covalently, and non-covalently bonded. Besides this classification, the program can verify if there are any mutations in the protein sequence by comparing it to a reference sequence. PDB-CAT is designed to be user-friendly, with its output clearly defining every entity present in each entry to facilitate decision-making.
 
 ## Documentation
 
-<img src="image_documentation/PDB-CAT.png" width="800">
-
+<img src="image_documentation/graphical-abstract.png" width="500">
 
 ## Installation
 
@@ -49,12 +51,7 @@ In order to create the Dataset there are two options:
 
 1. Search your protein target in Protein Data Bank and download the PDBx/mmCIF files in batches
 
-```bash
-  gunzip *.gz # Decompress downloaded .gz
-  find batch-download-structures-* -type f -exec mv {} . \ # Move files from the compress batch files
-  gunzip *.gz # Decompress downloaded .gz
-  mv *.cif cif/ # Move into cif directory
-```
+[Downloading files from PDB webpage](https://www.rcsb.org/downloads)
 
 2. Download the structures of known IDs with the following executable:
 
@@ -68,9 +65,11 @@ In order to create the Dataset there are two options:
 
 ```bash
   ./batch_download.sh -f input.txt -c -o /output # execute to download by ID names
-  gunzip *.gz # Decompress downloaded .gz
 ```
-
+(optional)
+```bash
+gunzip *.gz # Decompress downloaded .gz
+```
 Note: The dataset must be in the /cif directory before executing the program.
 
 ## Variables
@@ -78,19 +77,26 @@ Note: The dataset must be in the /cif directory before executing the program.
 To run this project, you will need to add the following variables to your main code
 
 ```python
-  out_file = '/home/...' # Path and name of the csv output file
-  mutation = True # Analyze mutations. True or False
-  output_path = '/home/...' # Path of the output folders
-  pdb_reference_sequence = '/home/.../PDB-CAT/*.cif'  # Path to the pdb file that will be the reference sequence
-  entity_reference = 0 # '0' means that the first _entity_poly of the pdb_reference_sequence will be the reference sequence
+ # Name of the folder with the cif files to process
+folder_name = "Main-protease-cif" 
+# Chose a threshold for the number of amino acids, to discriminate between peptides and the subunits of the protein                                               
+res_threshold = 20  
+# Analyze mutations. True or False        
+mutation = True      
+# PDB code of the protein to analyze. If mutation is False, this variable is not used.                           
+pdb = "rcsb_pdb_SARSCoV2"
 
 ```
 
 ### Choose to use mutation filter
-Mutation = True (useful in case you are using the same protein dataset of structures)
-    
-Mutation = False (useful in case your are working with different proteins)
-
+```python
+Mutation = True   
+```
+Example SARS-CoV-2 variants
+```python
+Mutation = False 
+```
+Example PDBBind
 
 ## Blacklist
 
@@ -103,3 +109,8 @@ This information is stored in a text file that users can edit, allowing for the 
 Main Protease SARS-CoV-2 Example
 
 Users can follow the procedure in the example directory, making modifications to the main code variables and exploring their possibilities
+
+# Extra
+
+Best Poster Award at the Strasbourg Summer School in Cheminformatics 2024
+<img src="image_documentation/PDB-CAT-poster.png" width="800">
