@@ -9,7 +9,7 @@ PDB-CAT is a Jupyter Notebook that aims to automatically categorize the PDB stru
 
 ## Documentation
 
-<img src="image_documentation/PDB-CAT_poster.png" width="800">
+<img src="image_documentation/PDB-CAT.png" width="800">
 
 
 ## Installation
