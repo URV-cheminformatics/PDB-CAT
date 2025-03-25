@@ -146,7 +146,7 @@ def check_covalent(cif_data, asym_id, chains):
     """
 
     modified_res_message = ''
-    out = ''
+    covalent = ''
 
     if '_struct_conn' in cif_data:
         for chain in chains.split(','):
@@ -157,16 +157,18 @@ def check_covalent(cif_data, asym_id, chains):
                     comp_id_key = f'{partner_key}_label_comp_id'
                     auth_seq_id_key = f'{partner_key}_auth_seq_id'
 
+                    # Verify if the residue is a modified residue
                     if 'pdbx_role' in r and r['pdbx_role'][0] == '?':
                         modified_res_message = check_modified_residues(
                             cif_data, chain, r.get(comp_id_key), r.get(auth_seq_id_key))
                     else:
                         modified_res_message = r.get('pdbx_role', 'Unknown role')
+                    
 
-                    out = f"{r.get(comp_id_key, 'UnknownComp')}{r.get(auth_seq_id_key, 'UnknownSeq')} {chain}"
-                    return out, modified_res_message
+                    covalent = f"{r.get(comp_id_key, 'UnknownComp')}{r.get(auth_seq_id_key, 'UnknownSeq')} {chain}"
+                    return covalent, modified_res_message
 
-    return out, modified_res_message
+    return covalent, modified_res_message
 
 
 
@@ -406,21 +408,24 @@ def search_covalent_bonds(ligands, cif_data, ligand_details, protein_coords_map,
         covalent = 'No'
         asym_id = search_asym_id(cif_data, ligand_details[i]['entity'])
 
-        for asym_id in asym_id.split(','):
+        for asym in asym_id.split(','):
             message = ''
-            covalent_bond, message = check_covalent(cif_data, asym_id, chain)
-            
+            covalent_bond, message = check_covalent(cif_data, asym, chain)
+
             if covalent_bond:
                 covalent = f'({message})' if message and message not in ["Unknown role", "covalent", "?"] else 'Yes'
                 bond = bond + '; ' + covalent_bond if bond else covalent_bond
                 break  # Exit if a covalent bond is found
 
         # If no covalent bond was found, check atom-level distances
-        if covalent == 'No' and i in ligand_coords_map:
+        if covalent == "Yes":
+            covalent_distance = 5.0 # Increase threshold for covalent bonds
+
+        if (covalent == 'No' and i in ligand_coords_map) or covalent == 'Yes':
             ligand_coordinates = ligand_coords_map[i]['coordinates']
             ligand_atoms = ligand_coords_map[i]['residues']  # Now contains atomic details
 
-            for asym_id, protein_data in protein_coords_map.items():
+            for asym, protein_data in protein_coords_map.items():
                 protein_coordinates = protein_data['coordinates']
                 protein_atoms = protein_data['residues']  # Now contains atomic details
 
@@ -447,6 +452,8 @@ def search_covalent_bonds(ligands, cif_data, ligand_details, protein_coords_map,
                     # Guardar solo la mejor interacción covalente
                     bond = f'{protein_atom[0]} ({protein_atom[2]}{protein_atom[3]}) - {ligand_atom[0]} ({ligand_atom[2]}{ligand_atom[3]}) ({distance:.2f} Å)'
                     break  # Exit if a covalent bond is found
+            
+
 
         ligand_details[i]['covalent'] = covalent
         ligand_details[i]['covalent_bond'] = bond
@@ -724,12 +731,20 @@ def write_output(directory_path, out_file, out_file_ligands, blacklist_dict, mut
         
         while not stop_event.is_set():
             elapsed_time = time.time() - start_time
-            ram_usage = psutil.Process().memory_info().rss / 1024**2  # Convert to MB
+            
+            mem_info = psutil.virtual_memory()
+            ram_usage_mb = mem_info.used / 1024**2   # Convert to MB
+            ram_usage_percent = mem_info.percent
             cpu_usage = psutil.cpu_percent(interval=0.5, percpu=True)  # Per-core CPU usage
             completed = processed_count.value
 
             # First line: General stats
-            info_line = f"Time: {elapsed_time:.2f}s | RAM: {ram_usage:.2f} MB | CPU: {sum(cpu_usage) / len(cpu_usage):.2f}% | Files: {completed}/{total_files}"
+            info_line = (
+                f"Time: {elapsed_time:.2f}s | "
+                f"RAM Usage: {ram_usage_mb:.2f} MB ({ram_usage_percent:.2f}%) | "
+                f"CPU: {sum(cpu_usage) / len(cpu_usage):.2f}% | "
+                f"Files: {completed}/{total_files}"
+            )
             
             # Second line: Per-core CPU usage
             cpu_line = "CPU Usage per core: " + " | ".join(f"{i + 1}: {usage:.1f}%" for i, usage in enumerate(cpu_usage))
