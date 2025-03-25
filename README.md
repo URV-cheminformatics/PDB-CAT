@@ -108,9 +108,12 @@ This information is stored in a text file that users can edit, allowing for the 
 
 Main Protease SARS-CoV-2 Example
 
-Users can follow the procedure in the example directory, making modifications to the main code variables and exploring their possibilities
+To provide an example of the use of the PDB-CAT program, we analyzed 1,436 PDB structures containing the SARS-CoV-2 M-pro. 
+The PDBx/mmCIF files were subject to a thorough analysis and mutation categorization. The FASTA file contained the first M-pro structure crystallized sequence (PDB ID: 6LU7) and the Omicron variant (B.1.1.529) M-pro sequence
+Users can access to CSV output in th Example folder
 
 # Extra
 
-Best Poster Award at the Strasbourg Summer School in Cheminformatics 2024
+**Best Poster Award at the Strasbourg Summer School in Cheminformatics 2024**
+
 <img src="image_documentation/PDB-CAT-poster.png" width="800">
