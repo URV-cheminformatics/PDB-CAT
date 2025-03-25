@@ -4,7 +4,7 @@
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
-<img src="image_documentation/PDB-CAT.png" width="500">
+<img src="image_documentation/PDB-CAT.png" width="200">
 
 PDB-CAT is a Jupyter Notebook that aims to automatically categorize the PDB structures based on the type of interaction between atoms in the protein and the ligand, and checking for any mutations in the sequence. 
 
@@ -12,7 +12,7 @@ PDB-CAT is a program that classifies a group of protein structures based on thei
 
 ## Documentation
 
-<img src="image_documentation/graphical-abstract.png" width="500">
+<img src="image_documentation/graphical-abstract.png" width="700">
 
 ## Installation
 
