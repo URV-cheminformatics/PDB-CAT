@@ -12,7 +12,7 @@ PDB-CAT is a program that classifies a group of protein structures based on thei
 
 ## Documentation
 
-<img src="image_documentation/graphical-abstract.png" width="700">
+<img src="image_documentation/graphical-abstract.png" width="800">
 
 ## Installation
 

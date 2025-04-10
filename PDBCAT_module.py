@@ -358,9 +358,10 @@ def read_coordinates_cif(file_path, entity_id):
     atom_types = np.array(atom_site["type_symbol"])[mask]
     residue_names = np.array(atom_site["label_comp_id"])[mask]
     residue_numbers = np.array(atom_site["label_seq_id"])[mask]
+    occupancies = np.array(atom_site["occupancy"], dtype=float)[mask]
 
-    # Combine all atomic details
-    atoms = list(zip(atom_ids, atom_types, residue_names, residue_numbers))
+    # Combine all atomic details including occupancy
+    atoms = list(zip(atom_ids, atom_types, residue_names, residue_numbers, occupancies))
 
     return np.column_stack((x, y, z)), atoms
 
@@ -417,43 +418,56 @@ def search_covalent_bonds(ligands, cif_data, ligand_details, protein_coords_map,
                 bond = bond + '; ' + covalent_bond if bond else covalent_bond
                 break  # Exit if a covalent bond is found
 
-        # If no covalent bond was found, check atom-level distances
-        if covalent == "Yes":
-            covalent_distance = 5.0 # Increase threshold for covalent bonds
-
+        # # If no covalent bond was found, check atom-level distances
         if (covalent == 'No' and i in ligand_coords_map) or covalent == 'Yes':
             ligand_coordinates = ligand_coords_map[i]['coordinates']
             ligand_atoms = ligand_coords_map[i]['residues']  # Now contains atomic details
+            best_distance = float('inf')
+            best_bond = ''
+            found_covalent = False
 
             for asym, protein_data in protein_coords_map.items():
                 protein_coordinates = protein_data['coordinates']
-                protein_atoms = protein_data['residues']  # Now contains atomic details
+                protein_atoms = protein_data['residues']  # Includes occupancy
 
                 if protein_coordinates is None or not isinstance(protein_coordinates, np.ndarray) or protein_coordinates.size == 0:
                     continue
 
-                # Compute distances between protein and ligand atoms
-                distances = np.linalg.norm(protein_coordinates[:, np.newaxis, :] - ligand_coordinates[np.newaxis, :, :], axis=2)
-                is_close = distances < covalent_distance  # Threshold for covalent bonds
+                distances = np.linalg.norm(
+                    protein_coordinates[:, np.newaxis, :] - ligand_coordinates[np.newaxis, :, :], axis=2
+                )
+                is_close = distances < covalent_distance
                 pairs = np.argwhere(is_close)
 
                 if pairs.size > 0:
-                    covalent = 'Yes'
-                    
-                    # Encontrar el índice del par con la menor distancia
-                    min_index = np.argmin(distances[pairs[:, 0], pairs[:, 1]])
-                    best_pair = pairs[min_index]
-                    
-                    # Extraer los átomos correspondientes
-                    protein_atom = protein_atoms[best_pair[0]]
-                    ligand_atom = ligand_atoms[best_pair[1]]
-                    distance = distances[best_pair[0], best_pair[1]]
-                    
-                    # Guardar solo la mejor interacción covalente
-                    bond = f'{protein_atom[0]} ({protein_atom[2]}{protein_atom[3]}) - {ligand_atom[0]} ({ligand_atom[2]}{ligand_atom[3]}) ({distance:.2f} Å)'
-                    break  # Exit if a covalent bond is found
-            
+                    for pair in pairs:
+                        p_idx, l_idx = pair
+                        protein_atom = protein_atoms[p_idx]
+                        ligand_atom = ligand_atoms[l_idx]
+                        distance = distances[p_idx, l_idx]
 
+                        # Comprobar occupancy
+                        try:
+                            protein_occupancy = float(protein_atom[4])
+                            ligand_occupancy = float(ligand_atom[4])
+                        except (IndexError, ValueError):
+                            protein_occupancy = ligand_occupancy = 0.0
+
+                        if protein_occupancy == 1.0 and ligand_occupancy == 1.0 and distance < best_distance:
+                            best_distance = distance
+                            found_covalent = True
+                            best_bond = (
+                                f'{protein_atom[0]} ({protein_atom[2]}{protein_atom[3]}) (Occup.: {protein_occupancy:.2f}) - '
+                                f'{ligand_atom[0]} ({ligand_atom[2]}{ligand_atom[3]}) (Occup.: {ligand_occupancy:.2f}) - '
+                                f'({distance:.2f} Å)'
+                            )
+
+            if found_covalent:
+                covalent = 'Yes'
+                bond = best_bond
+            else:
+                covalent = 'No'
+                bond = ''
 
         ligand_details[i]['covalent'] = covalent
         ligand_details[i]['covalent_bond'] = bond
@@ -617,7 +631,7 @@ def process_cif_file(file_path, mutation, blacklist, sequences_dict, res_thresho
     ligand_types = '\n'.join(ligand_types)
     ligand_functions = '\n'.join(ligand_functions)
     ligand_covalents = '\n'.join(ligand_covalents)
-    ligand_covalents_bond = '\n'.join(ligand_covalents_bond)
+    ligand_covalents_bond = '\n'.join(ligand_covalents_bond) # igual aqui
     ligands = '\n'.join(ligands)
     complex = 'Yes' if ligands else 'No'
 
