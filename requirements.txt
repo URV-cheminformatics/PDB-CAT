@@ -1,4 +1,4 @@
 biopython==1.81
-pandas==1.5.3
+pandas==2.2.3
 PDBeCif==1.5
 
