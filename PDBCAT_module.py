@@ -403,7 +403,7 @@ def search_covalent_bonds(ligands, cif_data, ligand_details, protein_coords_map,
         Updated dictionary with covalent bonds.
     """
     
-
+    
     for i in ligands:
         bond = ''
         covalent = 'No'
@@ -471,7 +471,7 @@ def search_covalent_bonds(ligands, cif_data, ligand_details, protein_coords_map,
 
         ligand_details[i]['covalent'] = covalent
         ligand_details[i]['covalent_bond'] = bond
-
+       
     return ligand_details
 
 
