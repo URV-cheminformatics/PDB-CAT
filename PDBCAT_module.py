@@ -657,7 +657,7 @@ def process_cif_file(file_path, mutation, blacklist, sequences_dict, res_thresho
         "Chain_ID": chain,
         "Num_Res": num_res,
         "Complex": complex,
-        "Discarted_Ligands": blacklist_id,
+        "Discarded_Ligands": blacklist_id,
         "Ligand": ligands,
         "Ligand_names": ligand_names,
         "Ligand_types": ligand_types,
