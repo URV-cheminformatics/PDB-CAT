@@ -453,7 +453,7 @@ def search_covalent_bonds(ligands, cif_data, ligand_details, protein_coords_map,
                         except (IndexError, ValueError):
                             protein_occupancy = ligand_occupancy = 0.0
 
-                        if protein_occupancy == 1.0 and ligand_occupancy == 1.0 and distance < best_distance:
+                        if distance < best_distance: #SGV 
                             best_distance = distance
                             found_covalent = True
                             best_bond = (
@@ -461,9 +461,14 @@ def search_covalent_bonds(ligands, cif_data, ligand_details, protein_coords_map,
                                 f'{ligand_atom[0]} ({ligand_atom[2]}{ligand_atom[3]}) (Occup.: {ligand_occupancy:.2f}) - '
                                 f'({distance:.2f} Å)'
                             )
+                            if protein_occupancy < 1.0 or ligand_occupancy < 1.0: #SGV
+                                best_bond += " [Partial occupancy]" #SGV
+                                covalent_type = "Yes (partial)" # SGV
+                            else: #SGV
+                                covalent_type = "Yes" #SGV
 
             if found_covalent:
-                covalent = 'Yes'
+                covalent = covalent_type 
                 bond = best_bond
             else:
                 covalent = 'No'
