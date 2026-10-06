@@ -113,6 +113,10 @@ The PDBx/mmCIF files underwent thorough analysis and mutation categorization. Th
 
 Users can access the CSV output in the "Example" folder.
 
+## Funding
+
+This work was supported by project PID2022-138327OB-I00 (MCIN/AEI/10.13039/501100011033/FEDER, UE) and project PDI2020-117646RB-I00 (MICIU/AEI/10.13039/501100011033).
+
 # Extra
 
 **Best Poster Award at the Strasbourg Summer School in Cheminformatics 2024**
